@@ -1,1 +1,2 @@
-# BOT
+# FieryMega
+[LockerTeam](https://telegram.me/LockerTeam)
