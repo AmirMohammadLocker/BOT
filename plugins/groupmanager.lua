@@ -381,7 +381,7 @@ user_name = check_markdown(data.first_name_)
 end
 if not administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] then
    if not lang then
-return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸t̸ a̸ G̸r̸o̸u̸p̸ o̸w̸n̸e̸r̸"✯, 0, "md")
+return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸t̸ a̸ G̸r̸o̸u̸p̸ o̸w̸n̸e̸r̸✯", 0, "md")
    else
 return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از قبل #صاحب گروه نبود✓*", 0, "md")
       end
@@ -471,7 +471,7 @@ end
     end
 if administration[tostring(arg.chat_id)]['whitelist'][tostring(data.id_)] then
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_→Usᴇʀ_ "..user_name.." *"..data.id_.."* _ɪs ᴀʟʀᴇᴀᴅʏ ɪɴ ᴡʜɪᴛᴇ #ʟɪsᴛ ✓", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!* \n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ a̸l̸r̸e̸a̸d̸y̸ i̸n̸ w̸h̸i̸t̸e̸ #l̸i̸s̸t̸✯", 0, "md")
 else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از قبل در #لیست سفید بود✓*", 0, "md")
       end
@@ -479,7 +479,7 @@ else
 administration[tostring(arg.chat_id)]['whitelist'][tostring(data.id_)] = user_name
     save_data(_config.moderation.data, administration)
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "→Usᴇʀ:"..user_name.." \n ＩＤ：`["..data.id_.."]` \n ʜᴀs ʙᴇᴇɴ ᴀᴅᴅᴇᴅ ᴛᴏ ᴡʜɪᴛᴇ #ʟɪsᴛ ✓", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!* \n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ A̸d̸d̸e̸d̸ t̸o̸ w̸h̸i̸t̸e̸ l̸i̸s̸t̸✯", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *بہ لیست سفید #باموفقیت اضافہ شد✓*", 0, "md")
    end
@@ -491,7 +491,7 @@ end
     end
 if not administration[tostring(arg.chat_id)]['whitelist'][tostring(data.id_)] then
     if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, " →Usᴇʀ:"..user_name.." \n ＩＤ：`["..data.id_.."]` \n ɪs ɴᴏᴛ ɪɴ ﹡ᴡʜɪᴛᴇ #ʟɪsᴛ﹡", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!* \n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ N̸o̸t̸ i̸n̸ w̸h̸i̸t̸e̸ #l̸i̸s̸t̸✯ ", 0, "md")
     else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از قبل در #لیست سفید نبود✓*", 0, "md")
    end
@@ -499,7 +499,7 @@ if not administration[tostring(arg.chat_id)]['whitelist'][tostring(data.id_)] th
 administration[tostring(arg.chat_id)]['whitelist'][tostring(data.id_)] = nil
     save_data(_config.moderation.data, administration)
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_→Usᴇʀ_ "..user_name.." *"..data.id_.."* _ʜᴀs ʙᴇᴇɴ ʀᴇᴍᴏᴠᴇᴅ ғʀᴏᴍ﹡ᴡʜɪᴛᴇ #ʟɪsᴛ﹡✓", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ r̸e̸m̸o̸v̸e̸d̸ f̸r̸o̸m̸ w̸h̸i̸t̸e̸ #l̸i̸s̸t̸✯", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از لیست سفید #باموفقیت حذف شد✓*", 0, "md")
    end
@@ -507,7 +507,7 @@ end
 if cmd == "setowner" then
 if administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] then
     if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "→Usᴇʀ:"..user_name.." \n ＩＤ：`["..data.id_.."]` \n ɪs ᴀʟʀᴇᴀᴅʏ ᴀ ﹡#ɢʀᴏᴜᴘ ᴏᴡɴᴇʀ﹡✓", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ a̸l̸r̸e̸a̸d̸y̸ a̸ #G̸r̸o̸u̸p̸ #o̸w̸n̸e̸r̸✯", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از قبل #صاحب گروه بود✓*", 0, "md")
       end
@@ -515,7 +515,7 @@ if administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] then
 administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] = user_name
     save_data(_config.moderation.data, administration)
    if not lang then
-  return tdcli.sendMessage(arg.chat_id, "", 0, "→Usᴇʀ:"..user_name.." \n ＩＤ：`["..data.id_.."]` \n ɪs ɴᴏᴡ ᴛʜᴇ ﹡#ɢʀᴏᴜᴘ ᴏᴡɴᴇʀ﹡ ✓", 0, "md")
+  return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸w̸ t̸h̸e̸ #g̸r̸o̸u̸p̸ #o̸w̸n̸e̸r̸✯", 0, "md")
    else
   return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *#باموفقیت بہ مقام صاحب گروه منتصب شد ✓*", 0, "md")
    end
@@ -523,7 +523,7 @@ end
   if cmd == "promote" then
 if administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] then
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "→Usᴇʀ:"..user_name.." \n ＩＤ：`["..data.id_.."]` \n ɪs ᴀʟʀᴇᴀᴅʏ ᴀ ﹡#ᴍᴏᴅᴇʀᴀᴛᴏʀ﹡ ✓", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ a̸l̸r̸e̸a̸d̸y̸ a̸ #M̸o̸d̸e̸r̸a̸t̸o̸r̸✯", 0, "md")
 else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از قبل #مُدیر گروه بود ✓*", 0, "md")
       end
@@ -531,7 +531,7 @@ else
 administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] = user_name
     save_data(_config.moderation.data, administration)
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "→Usᴇʀ:"..user_name.." \n ＩＤ：`["..data.id_.."]` \n ʜᴀs ʙᴇᴇɴ ﹡#ᴘʀᴏᴍᴏᴛᴇᴅ﹡ ✓", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ #P̸r̸o̸m̸o̸t̸e̸d̸✯", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *به مقام مدیر گروه منتصب شد*", 0, "md")
    end
@@ -539,7 +539,7 @@ end
    if cmd == "remowner" then
 if not administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] then
    if not lang then
-return tdcli.sendMessage(arg.chat_id, "", 0, "→Usᴇʀ:"..user_name.." \n ＩＤ：`["..data.id_.."]` \n ɪs ɴᴏᴛ ᴀ ﹡#ɢʀᴏᴜᴘ ᴏᴡɴᴇʀ﹡✓", 0, "md")
+return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸t̸ a̸ G̸r̸o̸u̸p̸ o̸w̸n̸e̸r̸✯", 0, "md")
    else
 return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از قبل #صاحب گروه نبود✓*", 0, "md")
       end
@@ -547,7 +547,7 @@ return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"
 administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] = nil
     save_data(_config.moderation.data, administration)
    if not lang then
-return tdcli.sendMessage(arg.chat_id, "", 0, " →Usᴇʀ:"..user_name.." \n ＩＤ：`["..data.id_.."]` \n ɪs ɴᴏ ʟᴏɴɢᴇʀ ᴀ ﹡#ɢʀᴏᴜᴘ ᴏᴡɴᴇʀ﹡✓", 0, "md")
+return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸ l̸o̸n̸g̸e̸r̸ a̸ G̸r̸o̸u̸p̸ o̸w̸n̸e̸r̸✯", 0, "md")
     else
 return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از مقام #صاحب گروه #باموفقیت برکنار شد✓*", 0, "md")
    end
@@ -555,7 +555,7 @@ end
    if cmd == "demote" then
 if not administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] then
     if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "→Usᴇʀ:"..user_name.." \n ＩＤ：`["..data.id_.."]` \n ɪs ɴᴏᴛ ᴀ﹡#ᴍᴏᴅᴇʀᴀᴛᴏʀ﹡ ✓", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸t̸ a̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✯", 0, "md")
     else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* از قبل مُدیر گروه #نبود✓", 0, "md")
    end
@@ -563,7 +563,7 @@ if not administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] then
 administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] = nil
     save_data(_config.moderation.data, administration)
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "→Usᴇʀ:"..user_name.." \n ＩＤ：`["..data.id_.."]` \n ʜᴀs ʙᴇᴇɴ_ ﹡#ᴅᴇᴍᴏᴛᴇᴅ﹡ ✓", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ D̸e̸m̸o̸t̸e̸d̸✯", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از مقام مُدیر گروه #باموفقیت برکنار شُد✓", 0, "md")
    end
@@ -587,7 +587,7 @@ else
     if lang then
   return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر یافت نشد✘_", 0, "md")
    else
-  return tdcli.sendMessage(arg.chat_id, "", 0, "→Uѕer Noт Foυɴd✘", 0, "md")
+  return tdcli.sendMessage(arg.chat_id, "", 0, "✦E̸r̸o̸r̸r̸✦\n ✘U̸s̸e̸r̸ N̸o̸t̸ F̸o̸u̸n̸d̸✘", 0, "md")
       end
    end
 end
@@ -599,7 +599,7 @@ local cmd = arg.cmd
     local administration = load_data(_config.moderation.data)
   if not administration[tostring(arg.chat_id)] then
   if not lang then
-    return tdcli.sendMessage(data.chat_id_, "", 0, "_✘Gʀᴏᴜᴘ ɪs ɴᴏᴛ ᴀᴅᴅᴇᴅ✘_", 0, "md")
+    return tdcli.sendMessage(data.chat_id_, "", 0, "✦E̸r̸o̸r̸r̸✦ \n ✦G̸r̸o̸u̸p̸ i̸s̸ n̸o̸t̸ a̸d̸d̸e̸d̸  \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'", 0, "md")
 else
     return tdcli.sendMessage(data.chat_id_, "", 0, "_✘این گروه درلیست مُدیریت ما وجود #ندارد✘_", 0, "md")
      end
@@ -619,7 +619,7 @@ end
     end
 if administration[tostring(arg.chat_id)]['whitelist'][tostring(data.id_)] then
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_→Usᴇʀ_ "..user_name.." "..data.id_.." _ɪs ᴀʟʀᴇᴀᴅʏ ɪɴ ᴡʜɪᴛᴇ #ʟɪsᴛ ✓", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!* \n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ a̸l̸r̸e̸a̸d̸y̸ i̸n̸ w̸h̸i̸t̸e̸ #l̸i̸s̸t̸✯", 0, "md")
 else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.." *از قبل در #لیست سفید بود✓", 0, "md")
       end
@@ -627,7 +627,7 @@ else
 administration[tostring(arg.chat_id)]['whitelist'][tostring(data.id_)] = user_name
     save_data(_config.moderation.data, administration)
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_→Usᴇʀ_ "..user_name.." "..data.id_.." _ʜᴀs ʙᴇᴇɴ ᴀᴅᴅᴇᴅ ᴛᴏ ᴡʜɪᴛᴇ #ʟɪsᴛ ✓", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!* \n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ A̸d̸d̸e̸d̸ t̸o̸ w̸h̸i̸t̸e̸ l̸i̸s̸t̸✯", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *بہ لیست سفید #باموفقیت اضافہ شد✓*", 0, "md")
    end
@@ -639,7 +639,7 @@ end
     end
 if not administration[tostring(arg.chat_id)]['whitelist'][tostring(data.id_)] then
     if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_→Usᴇʀ_ "..user_name.." "..data.id_.." _ɪs ɴᴏᴛ ɪɴ ﹡ᴡʜɪᴛᴇ #ʟɪsᴛ﹡ ✓", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!* \n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ N̸o̸t̸ i̸n̸ w̸h̸i̸t̸e̸ #l̸i̸s̸t̸✯ ", 0, "md")
     else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* از قبل در #لیست سفید نبود✓", 0, "md")
    end
@@ -647,7 +647,7 @@ if not administration[tostring(arg.chat_id)]['whitelist'][tostring(data.id_)] th
 administration[tostring(arg.chat_id)]['whitelist'][tostring(data.id_)] = nil
     save_data(_config.moderation.data, administration)
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_→Usᴇʀ_ "..user_name.." "..data.id_.." _ʜᴀs ʙᴇᴇɴ ʀᴇᴍᴏᴠᴇᴅ ғʀᴏᴍ﹡ᴡʜɪᴛᴇ #ʟɪsᴛ﹡ ✓", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ r̸e̸m̸o̸v̸e̸d̸ f̸r̸o̸m̸ w̸h̸i̸t̸e̸ #l̸i̸s̸t̸✯", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از لیست سفید #باموفقیت حذف شد✓*", 0, "md")
    end
@@ -655,7 +655,7 @@ end
   if cmd == "setowner" then
   if administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] then
     if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "→Usᴇʀ:"..user_name.." \n ＩＤ：`["..data.id_.."]` \n ɪs ᴀʟʀᴇᴀᴅʏ ᴀ ﹡#ɢʀᴏᴜᴘ ᴏᴡɴᴇʀ﹡ ✓", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ a̸l̸r̸e̸a̸d̸y̸ a̸ #G̸r̸o̸u̸p̸ #o̸w̸n̸e̸r̸✯", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." "..data.id_.."از قبل #صاحب گروه بود ✓", 0, "md")
       end
@@ -663,7 +663,7 @@ end
 administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] = user_name
     save_data(_config.moderation.data, administration)
    if not lang then
-  return tdcli.sendMessage(arg.chat_id, "", 0, "→Usᴇʀ:"..user_name.." \n ＩＤ：`["..data.id_.."]` \n ɪs ɴᴏᴡ ᴛʜᴇ ﹡#ɢʀᴏᴜᴘ ᴏᴡɴᴇʀ﹡ ✓", 0, "md")
+  return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸w̸ t̸h̸e̸ #g̸r̸o̸u̸p̸ #o̸w̸n̸e̸r̸✯", 0, "md")
    else
   return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *#باموفقیت بہ مقام صاحب گروه منتصب شد ✓*", 0, "md")
    end
@@ -671,7 +671,7 @@ end
   if cmd == "promote" then
 if administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] then
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "→Usᴇʀ:"..user_name.." \n ＩＤ：`["..data.id_.."]` \n ɪs ᴀʟʀᴇᴀᴅʏ ᴀ﹡#ᴍᴏᴅᴇʀᴀᴛᴏʀ﹡✓", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ a̸l̸r̸e̸a̸d̸y̸ a̸ #M̸o̸d̸e̸r̸a̸t̸o̸r̸✯", 0, "md")
 else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از قبل مُدیر گروه بود ✓*", 0, "md")
       end
@@ -679,7 +679,7 @@ else
 administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] = user_name
     save_data(_config.moderation.data, administration)
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "→Usᴇʀ:"..user_name.." \n ＩＤ：`["..data.id_.."]` \n ʜᴀs ʙᴇᴇɴ ﹡#ᴘʀᴏᴍᴏᴛᴇᴅ﹡ ✓", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ #P̸r̸o̸m̸o̸t̸e̸d̸✯", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *#باموفقیت بہ مقام مدیر گروه منتصب شد ✓*", 0, "md")
    end
@@ -687,7 +687,7 @@ end
    if cmd == "remowner" then
 if not administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] then
    if not lang then
-return tdcli.sendMessage(arg.chat_id, "", 0, "→Usᴇʀ:"..user_name.." \n ＩＤ：`["..data.id_.."]` \n ɪs ɴᴏᴛ ᴀ_ ﹡#ɢʀᴏᴜᴘ ᴏᴡɴᴇʀ﹡✓", 0, "md")
+return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸t̸ a̸ G̸r̸o̸u̸p̸ o̸w̸n̸e̸r̸✯", 0, "md")
    else
 return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از قبل #صاحب گروه نبود✓*", 0, "md")
       end
@@ -695,7 +695,7 @@ return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"
 administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] = nil
     save_data(_config.moderation.data, administration)
    if not lang then
-return tdcli.sendMessage(arg.chat_id, "", 0, "→Usᴇʀ:"..user_name.." \n ＩＤ：`["..data.id_.."]` \n ɪs ɴᴏ ʟᴏɴɢᴇʀ ᴀ﹡#ɢʀᴏᴜᴘ ᴏᴡɴᴇʀ﹡✓", 0, "md")
+return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸ l̸o̸n̸g̸e̸r̸ a̸ G̸r̸o̸u̸p̸ o̸w̸n̸e̸r̸✯", 0, "md")
     else
 return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از مقام #صاحب گروه #باموفقیت برکنار شد✓*", 0, "md")
    end
@@ -703,7 +703,7 @@ end
    if cmd == "demote" then
 if not administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] then
     if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "→Usᴇʀ:"..user_name.." \n ＩＤ：`["..data.id_.."]` \n ɪs ɴᴏᴛ ᴀ﹡#ᴍᴏᴅᴇʀᴀᴛᴏʀ﹡✓", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸t̸ a̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✯", 0, "md")
     else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از قبل مُدیر گروه #نبود✓*", 0, "md")
    end
@@ -711,7 +711,7 @@ if not administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] then
 administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] = nil
     save_data(_config.moderation.data, administration)
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "→Usᴇʀ:"..user_name.." \n ＩＤ：`["..data.id_.."]` \n ʜᴀs ʙᴇᴇɴ﹡#ᴅᴇᴍᴏᴛᴇᴅ﹡", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ D̸e̸m̸o̸t̸e̸d̸✯", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از مقام مُدیر گروه #باموفقیت برکنار شُد✓*", 0, "md")
    end
@@ -721,7 +721,7 @@ if data.username_ then
 username = '@'..check_markdown(data.username_)
 else
 if not lang then
-username = 'not found'
+username = '✦E̸r̸o̸r̸r̸✦ \n ✘U̸s̸e̸r̸ N̸o̸t̸ F̸o̸u̸n̸d̸✘'
  else
 username = 'ندارد'
   end
@@ -734,7 +734,7 @@ end
    end
  else
     if not lang then
-  return tdcli.sendMessage(arg.chat_id, "", 0, "_→Usᴇʀ Nᴏᴛ Fᴏᴜɴᴅ✘", 0, "md")
+  return tdcli.sendMessage(arg.chat_id, "", 0, "✦E̸r̸o̸r̸r̸✦ \n ✘U̸s̸e̸r̸ N̸o̸t̸ F̸o̸u̸n̸d̸✘", 0, "md")
    else
   return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر یافت نشد✘_", 0, "md")
     end
@@ -743,7 +743,7 @@ else
     if lang then
   return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر یافت نشد✘_", 0, "md")
    else
-  return tdcli.sendMessage(arg.chat_id, "", 0, "*→Usᴇʀ Nᴏᴛ Fᴏᴜɴᴅ✘*", 0, "md")
+  return tdcli.sendMessage(arg.chat_id, "", 0, "✦E̸r̸o̸r̸r̸✦ \n ✘U̸s̸e̸r̸ N̸o̸t̸ F̸o̸u̸n̸d̸✘", 0, "md")
       end
    end
 end
