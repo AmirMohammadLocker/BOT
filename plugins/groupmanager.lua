@@ -4125,7 +4125,7 @@ local data = load_data(_config.moderation.data)
 		if secchk then
 			checkmod = false
 			if not lang then
-				return tdcli.sendMessage(msg.to.id, 0, 1, '_Robot isn\'t Administrator, Please promote to Admin!_', 1, "md")
+				return tdcli.sendMessage(msg.to.id, 0, 1, '➲ R̸o̸b̸o̸t̸ i̸s̸n̸\'t̸ A̸d̸m̸i̸n̸i̸s̸t̸r̸a̸t̸o̸r̸, P̸l̸e̸a̸s̸e̸ P̸r̸o̸m̸o̸t̸e̸ t̸o̸ A̸d̸m̸i̸n̸!✘', 1, "md")
 			else
 				return tdcli.sendMessage(msg.to.id, 0, 1, '_لطفا برای کارکرد کامل دستورات، ربات را به #مدیر گروه ارتقا دهید._', 1, "md")
 			end
