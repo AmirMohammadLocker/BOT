@@ -1600,7 +1600,7 @@ end
 local mute_all = data[tostring(target)]["mutes"]["mute_all"] 
 if mute_all == "yes" then 
 if not lang then
-return "M̸u̸t̸e̸ A̸l̸l̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ A̸l̸l̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸" 
 elseif lang then
 return "بیصدا کردن همه فعال است"
 end
@@ -1608,7 +1608,7 @@ else
 data[tostring(target)]["mutes"]["mute_all"] = "yes"
  save_data(_config.moderation.data, data) 
 if not lang then
-return "*Mute All* _Has Been Enabled_" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ A̸l̸l̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸" 
 else
 return "بیصدا کردن همه فعال شد"
 end
@@ -1629,7 +1629,7 @@ end
 local mute_all = data[tostring(target)]["mutes"]["mute_all"] 
 if mute_all == "no" then 
 if not lang then
-return "*Mute All* _Is Already Disabled_" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ A̸l̸l̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
 elseif lang then
 return "بیصدا کردن همه غیر فعال است"
 end
@@ -1637,7 +1637,7 @@ else
 data[tostring(target)]["mutes"]["mute_all"] = "no"
  save_data(_config.moderation.data, data) 
 if not lang then
-return "*Mute All* _Has Been Disabled_" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ A̸l̸l̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
 else
 return "بیصدا کردن همه غیر فعال شد"
 end 
@@ -1659,7 +1659,7 @@ end
 local mute_gif = data[tostring(target)]["mutes"]["mute_gif"] 
 if mute_gif == "yes" then
 if not lang then
- return "*Mute Gif* _Is Already Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ G̸i̸f̸ i̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
 elseif lang then
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -1667,7 +1667,7 @@ else
  data[tostring(target)]["mutes"]["mute_gif"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then 
- return "*Mute Gif* _Has Been Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ G̸i̸f̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
 else
  return "بیصدا کردن تصاویر متحرک فعال شد"
 end
@@ -1688,7 +1688,7 @@ end
 local mute_gif = data[tostring(target)]["mutes"]["mute_gif"]
  if mute_gif == "no" then
 if not lang then
-return "*Mute Gif* _Is Already Disabled_" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ G̸i̸f̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
 elseif lang then
 return "بیصدا کردن تصاویر متحرک غیر فعال بود"
 end
@@ -1696,7 +1696,7 @@ else
 data[tostring(target)]["mutes"]["mute_gif"] = "no"
  save_data(_config.moderation.data, data) 
 if not lang then
-return "*Mute Gif* _Has Been Disabled_" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ G̸i̸f̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
 else
 return "بیصدا کردن تصاویر متحرک غیر فعال شد"
 end
@@ -1717,7 +1717,7 @@ end
 local mute_game = data[tostring(target)]["mutes"]["mute_game"] 
 if mute_game == "yes" then
 if not lang then
- return "*Mute Game* _Is Already Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ G̸a̸m̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
 elseif lang then
  return "بیصدا کردن بازی های تحت وب فعال است"
 end
@@ -1725,7 +1725,7 @@ else
  data[tostring(target)]["mutes"]["mute_game"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*Mute Game* _Has Been Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ G̸a̸m̸e̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
 else
  return "بیصدا کردن بازی های تحت وب فعال شد"
 end
@@ -1746,7 +1746,7 @@ end
 local mute_game = data[tostring(target)]["mutes"]["mute_game"]
  if mute_game == "no" then
 if not lang then
-return "*Mute Game* _Is Already Disabled_" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ G̸a̸m̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
 elseif lang then
 return "بیصدا کردن بازی های تحت وب غیر فعال است"
 end
@@ -1754,7 +1754,7 @@ else
 data[tostring(target)]["mutes"]["mute_game"] = "no"
  save_data(_config.moderation.data, data)
 if not lang then 
-return "*Mute Game* _Has Been Disabled_" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ G̸a̸m̸e̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
 else
 return "بیصدا کردن بازی های تحت وب غیر فعال شد"
 end
@@ -1775,7 +1775,7 @@ end
 local mute_inline = data[tostring(target)]["mutes"]["mute_inline"] 
 if mute_inline == "yes" then
 if not lang then
- return "*Mute Inline* _Is Already Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ I̸n̸l̸i̸n̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
 elseif lang then
  return "بیصدا کردن کیبورد شیشه ای فعال است"
 end
@@ -1783,7 +1783,7 @@ else
  data[tostring(target)]["mutes"]["mute_inline"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*Mute Inline* _Has Been Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ I̸n̸l̸i̸n̸e̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
 else
  return "بیصدا کردن کیبورد شیشه ای فعال شد"
 end
@@ -1804,7 +1804,7 @@ end
 local mute_inline = data[tostring(target)]["mutes"]["mute_inline"]
  if mute_inline == "no" then
 if not lang then
-return "*Mute Inline* _Is Already Disabled_" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ I̸n̸l̸i̸n̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
 elseif lang then
 return "بیصدا کردن کیبورد شیشه ای غیر فعال است"
 end
@@ -1812,7 +1812,7 @@ else
 data[tostring(target)]["mutes"]["mute_inline"] = "no"
  save_data(_config.moderation.data, data) 
 if not lang then
-return "*Mute Inline* _Has Been Disabled_" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ I̸n̸l̸i̸n̸e̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
 else
 return "بیصدا کردن کیبورد شیشه ای غیر فعال شد"
 end
@@ -1833,7 +1833,7 @@ end
 local mute_text = data[tostring(target)]["mutes"]["mute_text"] 
 if mute_text == "yes" then
 if not lang then
- return "*Mute Text* _Is Already Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ T̸e̸x̸t̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
 elseif lang then
  return "بیصدا کردن متن فعال است"
 end
@@ -1841,7 +1841,7 @@ else
  data[tostring(target)]["mutes"]["mute_text"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*Mute Text* _Has Been Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ T̸e̸x̸t̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
 else
  return "بیصدا کردن متن فعال شد"
 end
@@ -1862,7 +1862,7 @@ end
 local mute_text = data[tostring(target)]["mutes"]["mute_text"]
  if mute_text == "no" then
 if not lang then
-return "*Mute Text* _Is Already Disabled_"
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ T̸e̸x̸t̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸"
 elseif lang then
 return "بیصدا کردن متن غیر فعال است" 
 end
@@ -1870,7 +1870,7 @@ else
 data[tostring(target)]["mutes"]["mute_text"] = "no"
  save_data(_config.moderation.data, data) 
 if not lang then
-return "*Mute Text* _Has Been Disabled_" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ T̸e̸x̸t̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
 else
 return "بیصدا کردن متن غیر فعال شد"
 end
@@ -1891,7 +1891,7 @@ end
 local mute_photo = data[tostring(target)]["mutes"]["mute_photo"] 
 if mute_photo == "yes" then
 if not lang then
- return "*Mute Photo* _Is Already Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ P̸h̸o̸t̸o̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
 elseif lang then
  return "بیصدا کردن عکس فعال است"
 end
@@ -1899,7 +1899,7 @@ else
  data[tostring(target)]["mutes"]["mute_photo"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*Mute Photo* _Has Been Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ P̸h̸o̸t̸o̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
 else
  return "بیصدا کردن عکس فعال شد"
 end
@@ -1920,7 +1920,7 @@ end
 local mute_photo = data[tostring(target)]["mutes"]["mute_photo"]
  if mute_photo == "no" then
 if not lang then
-return "*Mute Photo* _Is Already Disabled_" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ P̸h̸o̸t̸o̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
 elseif lang then
 return "بیصدا کردن عکس غیر فعال است"
 end
@@ -1928,7 +1928,7 @@ else
 data[tostring(target)]["mutes"]["mute_photo"] = "no"
  save_data(_config.moderation.data, data) 
 if not lang then
-return "*Mute Photo* _Has Been Disabled_" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ P̸h̸o̸t̸o̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
 else
 return "بیصدا کردن عکس غیر فعال شد"
 end
@@ -1949,7 +1949,7 @@ end
 local mute_video = data[tostring(target)]["mutes"]["mute_video"] 
 if mute_video == "yes" then
 if not lang then
- return "*Mute Video* _Is Already Enabled_"
+ return "*✦Done!*\n ❂➤ *Mute Video* _Is Already Enabled_"
 elseif lang then
  return "بیصدا کردن فیلم فعال است"
 end
@@ -1957,7 +1957,7 @@ else
  data[tostring(target)]["mutes"]["mute_video"] = "yes" 
 save_data(_config.moderation.data, data)
 if not lang then 
- return "*Mute Video* _Has Been Enabled_"
+ return "*✦Done!*\n ❂➤ *Mute Video* _Has Been Enabled_"
 else
  return "بیصدا کردن فیلم فعال شد"
 end
@@ -1978,7 +1978,7 @@ end
 local mute_video = data[tostring(target)]["mutes"]["mute_video"]
  if mute_video == "no" then
 if not lang then
-return "*Mute Video* _Is Already Disabled_" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ V̸i̸d̸e̸o̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
 elseif lang then
 return "بیصدا کردن فیلم غیر فعال است"
 end
@@ -1986,7 +1986,7 @@ else
 data[tostring(target)]["mutes"]["mute_video"] = "no"
  save_data(_config.moderation.data, data) 
 if not lang then
-return "*Mute Video* _Has Been Disabled_" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ V̸i̸d̸e̸o̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
 else
 return "بیصدا کردن فیلم غیر فعال شد"
 end
@@ -2007,7 +2007,7 @@ end
 local mute_audio = data[tostring(target)]["mutes"]["mute_audio"] 
 if mute_audio == "yes" then
 if not lang then
- return "*Mute Audio* _Is Already Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ A̸u̸d̸i̸o̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
 elseif lang then
  return "بیصدا کردن آهنگ فعال است"
 end
@@ -2015,7 +2015,7 @@ else
  data[tostring(target)]["mutes"]["mute_audio"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*Mute Audio* _Has Been Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ A̸u̸d̸i̸o̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
 else 
 return "بیصدا کردن آهنگ فعال شد"
 end
@@ -2036,7 +2036,7 @@ end
 local mute_audio = data[tostring(target)]["mutes"]["mute_audio"]
  if mute_audio == "no" then
 if not lang then
-return "*Mute Audio* _Is Already Disabled_" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ A̸u̸d̸i̸o̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
 elseif lang then
 return "بیصدا کردن آهنک غیر فعال است"
 end
@@ -2044,7 +2044,7 @@ else
 data[tostring(target)]["mutes"]["mute_audio"] = "no"
  save_data(_config.moderation.data, data)
 if not lang then 
-return "*Mute Audio* _Has Been Disabled_"
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ A̸u̸d̸i̸o̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸"
 else
 return "بیصدا کردن آهنگ غیر فعال شد" 
 end
@@ -2065,7 +2065,7 @@ end
 local mute_voice = data[tostring(target)]["mutes"]["mute_voice"] 
 if mute_voice == "yes" then
 if not lang then
- return "*Mute Voice* _Is Already Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ V̸o̸i̸c̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
 elseif lang then
  return "بیصدا کردن صدا فعال است"
 end
@@ -2073,7 +2073,7 @@ else
  data[tostring(target)]["mutes"]["mute_voice"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*Mute Voice* _Has Been Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ V̸o̸i̸c̸e̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
 else
  return "بیصدا کردن صدا فعال شد"
 end
@@ -2094,7 +2094,7 @@ end
 local mute_voice = data[tostring(target)]["mutes"]["mute_voice"]
  if mute_voice == "no" then
 if not lang then
-return "*Mute Voice* _Is Already Disabled_" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ V̸o̸i̸c̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
 elseif lang then
 return "بیصدا کردن صدا غیر فعال است"
 end
@@ -2102,7 +2102,7 @@ else
 data[tostring(target)]["mutes"]["mute_voice"] = "no"
  save_data(_config.moderation.data, data)
 if not lang then 
-return "*Mute Voice* _Has Been Disabled_" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ V̸o̸i̸c̸e̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
 else
 return "بیصدا کردن صدا غیر فعال شد"
 end
@@ -2123,7 +2123,7 @@ end
 local mute_sticker = data[tostring(target)]["mutes"]["mute_sticker"] 
 if mute_sticker == "yes" then
 if not lang then
- return "*Mute Sticker* _Is Already Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ S̸t̸i̸c̸k̸e̸r̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
 elseif lang then
  return "بیصدا کردن برچسب فعال است"
 end
@@ -2131,7 +2131,7 @@ else
  data[tostring(target)]["mutes"]["mute_sticker"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*Mute Sticker* _Has Been Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ S̸t̸i̸c̸k̸e̸r̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
 else
  return "بیصدا کردن برچسب فعال شد"
 end
@@ -2152,7 +2152,7 @@ end
 local mute_sticker = data[tostring(target)]["mutes"]["mute_sticker"]
  if mute_sticker == "no" then
 if not lang then
-return "*Mute Sticker* _Is Already Disabled_" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ S̸t̸i̸c̸k̸e̸r̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
 elseif lang then
 return "بیصدا کردن برچسب غیر فعال است"
 end
@@ -2160,7 +2160,7 @@ else
 data[tostring(target)]["mutes"]["mute_sticker"] = "no"
  save_data(_config.moderation.data, data)
 if not lang then 
-return "*Mute Sticker* _Has Been Disabled_"
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ S̸t̸i̸c̸k̸e̸r̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸"
 else
 return "بیصدا کردن برچسب غیر فعال شد"
 end 
@@ -2181,7 +2181,7 @@ end
 local mute_contact = data[tostring(target)]["mutes"]["mute_contact"] 
 if mute_contact == "yes" then
 if not lang then
- return "*Mute Contact* _Is Already Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ C̸o̸n̸t̸a̸c̸t̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
 elseif lang then
  return "بیصدا کردن مخاطب فعال است"
 end
@@ -2189,7 +2189,7 @@ else
  data[tostring(target)]["mutes"]["mute_contact"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*Mute Contact* _Has Been Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ C̸o̸n̸t̸a̸c̸t̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
 else
  return "بیصدا کردن مخاطب فعال شد"
 end
@@ -2210,7 +2210,7 @@ end
 local mute_contact = data[tostring(target)]["mutes"]["mute_contact"]
  if mute_contact == "no" then
 if not lang then
-return "*Mute Contact* _Is Already Disabled_" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ C̸o̸n̸t̸a̸c̸t̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
 elseif lang then
 return "بیصدا کردن مخاطب غیر فعال است"
 end
@@ -2218,7 +2218,7 @@ else
 data[tostring(target)]["mutes"]["mute_contact"] = "no"
  save_data(_config.moderation.data, data) 
 if not lang then
-return "*Mute Contact* _Has Been Disabled_" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ C̸o̸n̸t̸a̸c̸t̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
 else
 return "بیصدا کردن مخاطب غیر فعال شد"
 end
@@ -2239,7 +2239,7 @@ end
 local mute_forward = data[tostring(target)]["mutes"]["mute_forward"] 
 if mute_forward == "yes" then
 if not lang then
- return "*Mute Forward* _Is Already Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ F̸o̸r̸w̸a̸r̸d̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
 elseif lang then
  return "بیصدا کردن نقل قول فعال است"
 end
@@ -2247,7 +2247,7 @@ else
  data[tostring(target)]["mutes"]["mute_forward"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*Mute Forward* _Has Been Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ F̸o̸r̸w̸a̸r̸d̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
 else
  return "بیصدا کردن نقل قول فعال شد"
 end
@@ -2268,7 +2268,7 @@ end
 local mute_forward = data[tostring(target)]["mutes"]["mute_forward"]
  if mute_forward == "no" then
 if not lang then
-return "*Mute Forward* _Is Already Disabled_"
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ F̸o̸r̸w̸a̸r̸d̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸"
 elseif lang then
 return "بیصدا کردن نقل قول غیر فعال است"
 end 
@@ -2276,7 +2276,7 @@ else
 data[tostring(target)]["mutes"]["mute_forward"] = "no"
  save_data(_config.moderation.data, data)
 if not lang then 
-return "*Mute Forward* _Has Been Disabled_" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ F̸o̸r̸w̸a̸r̸d̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
 else
 return "بیصدا کردن نقل قول غیر فعال شد"
 end
@@ -2297,7 +2297,7 @@ end
 local mute_location = data[tostring(target)]["mutes"]["mute_location"] 
 if mute_location == "yes" then
 if not lang then
- return "*Mute Location* _Is Already Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ L̸o̸c̸a̸t̸i̸o̸n̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
 elseif lang then
  return "بیصدا کردن موقعیت فعال است"
 end
@@ -2305,7 +2305,7 @@ else
  data[tostring(target)]["mutes"]["mute_location"] = "yes" 
 save_data(_config.moderation.data, data)
 if not lang then
- return "*Mute Location* _Has Been Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ L̸o̸c̸a̸t̸i̸o̸n̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
 else
  return "بیصدا کردن موقعیت فعال شد"
 end
@@ -2326,7 +2326,7 @@ end
 local mute_location = data[tostring(target)]["mutes"]["mute_location"]
  if mute_location == "no" then
 if not lang then
-return "*Mute Location* _Is Already Disabled_" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ L̸o̸c̸a̸t̸i̸o̸n̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
 elseif lang then
 return "بیصدا کردن موقعیت غیر فعال است"
 end
@@ -2334,7 +2334,7 @@ else
 data[tostring(target)]["mutes"]["mute_location"] = "no"
  save_data(_config.moderation.data, data) 
 if not lang then
-return "*Mute Location* _Has Been Disabled_" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ L̸o̸c̸a̸t̸i̸o̸n̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
 else
 return "بیصدا کردن موقعیت غیر فعال شد"
 end
@@ -2355,7 +2355,7 @@ end
 local mute_document = data[tostring(target)]["mutes"]["mute_document"] 
 if mute_document == "yes" then
 if not lang then
- return "*Mute Document* _Is Already Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ D̸o̸c̸u̸m̸e̸n̸t̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
 elseif lang then
  return "بیصدا کردن اسناد فعال لست"
 end
@@ -2363,7 +2363,7 @@ else
  data[tostring(target)]["mutes"]["mute_document"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*Mute Document* _Has Been Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ D̸o̸c̸u̸m̸e̸n̸t̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
 else
  return "بیصدا کردن اسناد فعال شد"
 end
@@ -2384,7 +2384,7 @@ end
 local mute_document = data[tostring(target)]["mutes"]["mute_document"]
  if mute_document == "no" then
 if not lang then
-return "*Mute Document* _Is Already Disabled_" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ D̸o̸c̸u̸m̸e̸n̸t̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
 elseif lang then
 return "بیصدا کردن اسناد غیر فعال است"
 end
@@ -2392,7 +2392,7 @@ else
 data[tostring(target)]["mutes"]["mute_document"] = "no"
  save_data(_config.moderation.data, data) 
 if not lang then
-return "*Mute Document* _Has Been Disabled_" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ D̸o̸c̸u̸m̸e̸n̸t̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
 else
 return "بیصدا کردن اسناد غیر فعال شد"
 end
@@ -2413,7 +2413,7 @@ end
 local mute_tgservice = data[tostring(target)]["mutes"]["mute_tgservice"] 
 if mute_tgservice == "yes" then
 if not lang then
- return "*Mute TgService* _Is Already Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ T̸g̸S̸e̸r̸v̸i̸c̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
 elseif lang then
  return "بیصدا کردن خدمات تلگرام فعال است"
 end
@@ -2421,7 +2421,7 @@ else
  data[tostring(target)]["mutes"]["mute_tgservice"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*Mute TgService* _Has Been Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ T̸g̸S̸e̸r̸v̸i̸c̸e̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
 else
 return "بیصدا کردن خدمات تلگرام فعال شد"
 end
@@ -2442,7 +2442,7 @@ end
 local mute_tgservice = data[tostring(target)]["mutes"]["mute_tgservice"]
  if mute_tgservice == "no" then
 if not lang then
-return "*Mute TgService* _Is Already Disabled_"
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ T̸g̸S̸e̸r̸v̸i̸c̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸"
 elseif lang then
 return "بیصدا کردن خدمات تلگرام غیر فعال است"
 end 
@@ -2450,7 +2450,7 @@ else
 data[tostring(target)]["mutes"]["mute_tgservice"] = "no"
  save_data(_config.moderation.data, data) 
 if not lang then
-return "*Mute TgService* _Has Been Disabled_"
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ T̸g̸S̸e̸r̸v̸i̸c̸e̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸"
 else
 return "بیصدا کردن خدمات تلگرام غیر فعال شد"
 end 
@@ -2472,7 +2472,7 @@ end
 local mute_keyboard = data[tostring(target)]["mutes"]["mute_keyboard"] 
 if mute_keyboard == "yes" then
 if not lang then
- return "*Mute Keyboard* _Is Already Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ K̸e̸y̸b̸o̸a̸r̸d̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
 elseif lang then
  return "بیصدا کردن صفحه کلید فعال است"
 end
@@ -2480,7 +2480,7 @@ else
  data[tostring(target)]["mutes"]["mute_keyboard"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*Mute Keyboard* _Has Been Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ K̸e̸y̸b̸o̸a̸r̸d̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
 else
 return "بیصدا کردن صفحه کلید فعال شد"
 end
@@ -2501,7 +2501,7 @@ end
 local mute_keyboard = data[tostring(target)]["mutes"]["mute_keyboard"]
  if mute_keyboard == "no" then
 if not lang then
-return "*Mute Keyboard* _Is Already Disabled_"
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ K̸e̸y̸b̸o̸a̸r̸d̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸"
 elseif lang then
 return "بیصدا کردن صفحه کلید غیرفعال است"
 end 
@@ -2509,7 +2509,7 @@ else
 data[tostring(target)]["mutes"]["mute_keyboard"] = "no"
  save_data(_config.moderation.data, data) 
 if not lang then
-return "*Mute Keyboard* _Has Been Disabled_"
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ K̸e̸y̸b̸o̸a̸r̸d̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸"
 else
 return "بیصدا کردن صفحه کلید غیرفعال شد"
 end 
@@ -2627,7 +2627,7 @@ local data = load_data(_config.moderation.data)
 local chat = msg.to.id
 local user = msg.from.id
 if msg.to.type ~= 'pv' then
-if ((matches[1] == "add" and not Clang) or (matches[1] == "افزودن" and Clang)) then
+if ((matches[1] == "add" and not Clang) or (matches[1] == "نصب" and Clang)) then
 return modadd(msg)
 end
 if ((matches[1] == "rem" and not Clang) or (matches[1] == "حذف گروه" and Clang)) then
@@ -3363,14 +3363,14 @@ if ((matches[1] == "whitelist" and not Clang) or (matches[1] == "لیست سفی
 return whitelist(msg.to.id)
 end
 
-if ((matches[1]:lower() == "option" and not Clang) or (matches[1] == "تنظیمات کلی" and Clang)) and is_mod(msg) then
+if ((matches[1]:lower() == "panel" and not Clang) or (matches[1] == "پنل" and Clang)) and is_mod(msg) then
 local function found_helper(TM, Beyond)
 local function inline_query_cb(TM, BD)
       if BD.results_ and BD.results_[0] then
 		tdcli.sendInlineQueryResultMessage(msg.to.id, 0, 0, 1, BD.inline_query_id_, BD.results_[0].id_, dl_cb, nil)
     else
     if not lang then
-    text = "*Helper is offline*\n\n"
+    text = "✦E̸r̸o̸r̸r̸✦ \n❂➤ H̸e̸l̸p̸e̸r̸ i̸s̸ o̸f̸f̸l̸i̸n̸e̸ :(\n\n"
         elseif lang then
     text = "_ربات هلپر خاموش است_\n\n"
     end
@@ -3389,7 +3389,7 @@ redis:set(hash, true)
 return "*زبان گروه تنظیم شد به : فارسی*"..msg_caption
   elseif matches[2] == "en" then
  redis:del(hash)
-return "_Group Language Set To:_ EN"..msg_caption
+return "*✦Done!*\n ❂➤ G̸r̸o̸u̸p̸ L̸a̸n̸g̸u̸a̸g̸e̸ S̸e̸t̸ T̸o̸: *E̸N̸*"..msg_caption
 end
 end
 if (matches[1] == 'زبان' and Clang) and is_owner(msg) then
@@ -3399,7 +3399,7 @@ redis:set(hash, true)
 return "*زبان گروه تنظیم شد به : فارسی*"..msg_caption
   elseif matches[2] == "انگلیسی" then
  redis:del(hash)
-return "_Group Language Set To:_ EN"..msg_caption
+return "*✦Done!*\n ❂➤ G̸r̸o̸u̸p̸ L̸a̸n̸g̸u̸a̸g̸e̸ S̸e̸t̸ T̸o̸: *E̸N̸*"..msg_caption
 end
 end
 
@@ -3410,7 +3410,7 @@ redis:set(hash, true)
    if lang then
 return "*زبان دستورات ربات تنظیم شد به : فارسی*"..msg_caption
 else
-return "_Bot Commands Language Set To:_ Fa"..msg_caption
+return "*✦Done!*\n ❂➤ B̸o̸t̸ C̸o̸m̸m̸a̸n̸d̸s̸ L̸a̸n̸g̸u̸a̸g̸e̸ S̸e̸t̸ T̸o̸:* F̸a̸*"..msg_caption
 end
 end
 end
@@ -3421,7 +3421,7 @@ redis:del(hash)
    if lang then
 return "*زبان دستورات ربات تنظیم شد به : انگلیسی*"..msg_caption
 else
-return "_Bot Commands Language Set To:_ EN"..msg_caption
+return "*✦Done!*\n ❂➤ B̸o̸t̸ C̸o̸m̸m̸a̸n̸d̸s̸ L̸a̸n̸g̸u̸a̸g̸e̸ S̸e̸t̸ T̸o̸: *E̸N̸*"..msg_caption
 end
 end
 
@@ -4059,7 +4059,7 @@ end
 			welcome = data[tostring(chat)]['settings']['welcome']
 			if welcome == "yes" then
        if not lang then
-				return "_Group_ *welcome* _is already enabled_"
+				return "G̸r̸o̸u̸p̸ *w̸e̸l̸c̸o̸m̸e̸* i̸s̸ a̸l̸r̸e̸a̸d̸y̸ e̸n̸a̸b̸l̸e̸d̸"
        elseif lang then
 				return "_خوشآمد گویی از قبل فعال بود_"
            end
@@ -4067,7 +4067,7 @@ end
 		data[tostring(chat)]['settings']['welcome'] = "yes"
 	    save_data(_config.moderation.data, data)
        if not lang then
-				return "_Group_ *welcome* _has been enabled_"
+				return "G̸r̸o̸u̸p̸ *w̸e̸l̸c̸o̸m̸e̸* h̸a̸s̸ b̸e̸e̸n̸ e̸n̸a̸b̸l̸e̸d̸"
        elseif lang then
 				return "_خوشآمد گویی فعال شد_"
           end
@@ -4078,7 +4078,7 @@ end
 			welcome = data[tostring(chat)]['settings']['welcome']
 			if welcome == "no" then
       if not lang then
-				return "_Group_ *Welcome* _is already disabled_"
+				return "G̸r̸o̸u̸p̸ *W̸e̸l̸c̸o̸m̸e̸* i̸s̸ a̸l̸r̸e̸a̸d̸y̸ d̸i̸s̸a̸b̸l̸e̸d̸"
       elseif lang then
 				return "_خوشآمد گویی از قبل فعال نبود_"
          end
@@ -4086,7 +4086,7 @@ end
 		data[tostring(chat)]['settings']['welcome'] = "no"
 	    save_data(_config.moderation.data, data)
       if not lang then
-				return "_Group_ *welcome* _has been disabled✓_"
+				return "G̸r̸o̸u̸p̸ *w̸e̸l̸c̸o̸m̸e̸* h̸a̸s̸ b̸e̸e̸n̸ d̸i̸s̸a̸b̸l̸e̸d̸✓"
       elseif lang then
 				return "_✓خوشآمد گویی غیرفعال شد_"
           end
@@ -4097,7 +4097,7 @@ end
 		data[tostring(chat)]['setwelcome'] = matches[2]
 	    save_data(_config.moderation.data, data)
        if not lang then
-		return "_Welcome Message Has Been Set To :_\n*"..matches[2].."*\n\n*You can use :*\n_{gpname} Group Name_\n_{rules} ➣ Show Group Rules_\n_{time} ➣ Show time english _\n_{date} ➣ Show date english _\n_{timefa} ➣ Show time persian _\n_{datefa} ➣ show date persian _\n_{name} ➣ New Member First Name_\n_{username} ➣ New Member Username_"..msg_caption
+		return "W̸e̸l̸c̸o̸m̸e̸ M̸e̸s̸s̸a̸g̸e̸ H̸a̸s̸ B̸e̸e̸n̸ S̸e̸t̸ T̸o̸ :\n`[*"..matches[2].."*]`\n\nY̸o̸u̸ c̸a̸n̸ u̸s̸e̸ :\n̸{g̸p̸n̸a̸m̸e̸} G̸r̸o̸u̸p̸ N̸a̸m̸e̸\n̸{r̸u̸l̸e̸s̸} ➣ S̸h̸o̸w̸ G̸r̸o̸u̸p̸ R̸u̸l̸e̸s̸\n̸{t̸i̸m̸e̸} ➣ S̸h̸o̸w̸ t̸i̸m̸e̸ e̸n̸g̸l̸i̸s̸h̸ \n̸{d̸a̸t̸e̸} ➣ S̸h̸o̸w̸ d̸a̸t̸e̸ e̸n̸g̸l̸i̸s̸h̸ \n̸{t̸i̸m̸e̸f̸a̸} ➣ S̸h̸o̸w̸ t̸i̸m̸e̸ p̸e̸r̸s̸i̸a̸n̸ \n̸{d̸a̸t̸e̸f̸a̸} ➣ s̸h̸o̸w̸ d̸a̸t̸e̸ p̸e̸r̸s̸i̸a̸n̸ \n̸{n̸a̸m̸e̸} ➣ N̸e̸w̸ M̸e̸m̸b̸e̸r̸ F̸i̸r̸s̸t̸ N̸a̸m̸e̸\n̸{u̸s̸e̸r̸n̸a̸m̸e̸} ➣ N̸e̸w̸ M̸e̸m̸b̸e̸r̸ U̸s̸e̸r̸n̸a̸m̸e̸"..msg_caption
        else
 		return "_پیام خوشآمد گویی تنظیم شد به :_\n*"..matches[2].."*\n\n*شما میتوانید از*\n_{gpname} نام گروه_\n_{rules} ➣ نمایش قوانین گروه_\n_{time} ➣ ساعت به زبان انگلیسی _\n_{date} ➣ تاریخ به زبان انگلیسی _\n_{timefa} ➣ ساعت به زبان فارسی _\n_{datefa} ➣ تاریخ به زبان فارسی _\n_{name} ➣ نام کاربر جدید_\n_{username} ➣ نام کاربری کاربر جدید_\n_استفاده کنید_"..msg_caption
         end
@@ -4141,9 +4141,9 @@ local data = load_data(_config.moderation.data)
      welcome = administration[arg.chat_id]['setwelcome']
       else
      if not lang then
-     welcome = "*Welcome Dude*🌹"
+     welcome = "W̸e̸l̸c̸o̸m̸e̸ D̸u̸d̸e̸🌹"
     elseif lang then
-     welcome = "_🌹خوش آمدید_"
+     welcome = "🌹خوش آمدید"
         end
      end
  if administration[tostring(arg.chat_id)]['rules'] then
@@ -4201,7 +4201,7 @@ patterns ={
 "^[!/#](test)$",
 "^[!/#](add)$",
 "^[!/#](rem)$",
-"^[!/#](option)$",
+"^[!/#](panel)$",
 "^[!/#](whitelist) ([+-])$",
 "^[!/#](whitelist) ([+-]) (.*)$",
 "^[#!/](whitelist)$",
@@ -4251,10 +4251,10 @@ patterns ={
 "^(من)$",
 "^(من) (.*)$",
 '^(تنظیمات)$',
-'^(تنظیمات کلی)$',
+'^(پنل)$',
 '^(سنجاق)$',
 '^(حذف سنجاق)$',
-'^(افزودن)$',
+'^(نصب)$',
 '^(حذف گروه)$',
 '^(ادمین گروه)$',
 '^(ادمین گروه) (.*)$',
