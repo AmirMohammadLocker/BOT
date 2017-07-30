@@ -82,7 +82,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 local sudo_users = _config.sudo_users
   if not lang then
- text = "*List of sudo users :*\n"
+ text = "L̸i̸s̸t̸ o̸f̸ s̸u̸d̸o̸ u̸s̸e̸r̸s̸ :\n"
    else
  text = "_لیست سودو های ربات :_\n"
   end
@@ -97,7 +97,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 local sudo_users = _config.sudo_users
   if not lang then
- text = '*List of bot admins :*\n'
+ text = 'L̸i̸s̸t̸ o̸f̸ b̸o̸t̸ a̸d̸m̸i̸n̸s̸ :\n'
    else
  text = "_لیست ادمین های ربات :_\n"
   end
@@ -109,7 +109,7 @@ local sudo_users = _config.sudo_users
 		  	end
 		  	if compare == text then
    if not lang then
-		  		text = '_No_ *admins* _available_'
+		  		text = 'N̸o̸ *a̸d̸m̸i̸n̸s̸* a̸v̸a̸i̸l̸a̸b̸l̸e̸'
       else
 		  		text = '_ادمینی برای ربات تعیین نشده_'
            end
@@ -124,7 +124,7 @@ local function chat_list(msg)
     if not data[tostring(groups)] then
         return 'No groups at the moment'
     end
-    local message = 'List of Groups:\n*Use #join (ID) to join*\n\n'
+    local message = 'L̸i̸s̸t̸ o̸f̸ G̸r̸o̸u̸p̸s̸:\nU̸s̸e̸ #j̸o̸i̸n̸ (I̸D̸) t̸o̸ j̸o̸i̸n̸\n\n'
     for k,v in pairsByKeys(data[tostring(groups)]) do
 		local group_id = v
 		if data[tostring(group_id)] then
@@ -134,7 +134,7 @@ local function chat_list(msg)
 			if m == 'set_name' then
 				name = n:gsub("", "")
 				chat_name = name:gsub("‮", "")
-				group_name_id = name .. '\n(ID: ' ..group_id.. ')\n\n'
+				group_name_id = name .. '\n(I̸D̸: ' ..group_id.. ')\n\n'
 				if name:match("[\216-\219][\128-\191]") then
 					group_info = i..' - \n'..group_name_id
 				else
@@ -180,7 +180,7 @@ local function warning(msg)
 			if lang then
 				tdcli.sendMessage(msg.to.id, 0, 1, 'از شارژ گروه 1 روز باقی مانده، برای شارژ مجدد با سودو ربات تماس بگیرید وگرنه با اتمام زمان شارژ، گروه از لیست ربات حذف وربات گروه را ترک خواهد کرد.', 1, 'md')
 			else
-				tdcli.sendMessage(msg.to.id, 0, 1, '_Group 1 day remaining charge, to recharge the robot contact with the sudo. With the completion of charging time, the group removed from the robot list and the robot will leave the group._', 1, 'md')
+				tdcli.sendMessage(msg.to.id, 0, 1, 'G̸r̸o̸u̸p̸ 1̸ d̸a̸y̸ r̸e̸m̸a̸i̸n̸i̸n̸g̸ c̸h̸a̸r̸g̸e̸, t̸o̸ r̸e̸c̸h̸a̸r̸g̸e̸ t̸h̸e̸ r̸o̸b̸o̸t̸ c̸o̸n̸t̸a̸c̸t̸ w̸i̸t̸h̸ t̸h̸e̸ s̸u̸d̸o̸. W̸i̸t̸h̸ t̸h̸e̸ c̸o̸m̸p̸l̸e̸t̸i̸o̸n̸ o̸f̸ c̸h̸a̸r̸g̸i̸n̸g̸ t̸i̸m̸e̸, t̸h̸e̸ g̸r̸o̸u̸p̸ r̸e̸m̸o̸v̸e̸d̸ f̸r̸o̸m̸ t̸h̸e̸ r̸o̸b̸o̸t̸ l̸i̸s̸t̸ a̸n̸d̸ t̸h̸e̸ r̸o̸b̸o̸t̸ w̸i̸l̸l̸ l̸e̸a̸v̸e̸ t̸h̸e̸ g̸r̸o̸u̸p̸.', 1, 'md')
 			end
 		end
 	end
@@ -201,7 +201,7 @@ user_name = check_markdown(data.first_name_)
 end
 if is_admin1(tonumber(data.id_)) then
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is already an_ *admin*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]`i̸s̸ a̸l̸r̸e̸a̸d̸y̸ a̸n̸ #*a̸d̸m̸i̸n̸*", 0, "md")
   else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _از قبل ادمین ربات بود_", 0, "md")
       end
@@ -209,7 +209,7 @@ if is_admin1(tonumber(data.id_)) then
 	    table.insert(_config.admins, {tonumber(data.id_), user_name})
 		save_config()
      if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _has been promoted as_ *admin*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."] h̸a̸s̸ b̸e̸e̸n̸ P̸r̸o̸m̸o̸t̸e̸d̸ a̸s̸ #*a̸d̸m̸i̸n̸*", 0, "md")
     else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _به مقام ادمین ربات منتصب شد_", 0, "md")
    end
@@ -231,7 +231,7 @@ user_name = check_markdown(data.first_name_)
 end
 if not is_admin1(data.id_) then
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is not a_ *admin*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."] i̸s̸ N̸o̸t̸ a̸ #*a̸d̸m̸i̸n̸*", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _از قبل ادمین ربات نبود_", 0, "md")
       end
@@ -239,7 +239,7 @@ if not is_admin1(data.id_) then
 		table.remove(_config.admins, nameid)
 		save_config()
     if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _has been demoted from_ *admin*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."] h̸a̸s̸ b̸e̸e̸n̸ d̸e̸m̸o̸t̸e̸d̸ f̸r̸o̸m̸ #*a̸d̸m̸i̸n̸*", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _از مقام ادمین ربات برکنار شد_", 0, "md")
    end
@@ -260,7 +260,7 @@ user_name = check_markdown(data.first_name_)
 end
 if already_sudo(tonumber(data.id_)) then
   if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is already a_ *sudoer*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."] i̸s̸ a̸l̸r̸e̸a̸d̸y̸ a̸ *S̸u̸d̸o̸e̸r̸*", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _از قبل سودو ربات بود_", 0, "md")
       end
@@ -269,7 +269,7 @@ if already_sudo(tonumber(data.id_)) then
 		save_config()
      reload_plugins(true)
   if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is now_ *sudoer*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."] i̸s̸ n̸o̸w̸ *S̸u̸d̸o̸e̸r̸*", 0, "md")
   else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _به مقام سودو ربات منتصب شد_", 0, "md")
    end
@@ -290,7 +290,7 @@ user_name = check_markdown(data.first_name_)
 end
      if not already_sudo(data.id_) then
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is not a_ *sudoer*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."] i̸s̸ N̸o̸t̸ a̸ *S̸u̸d̸o̸e̸r̸*", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _از قبل سودو ربات نبود_", 0, "md")
       end
@@ -299,7 +299,7 @@ end
 		save_config()
      reload_plugins(true) 
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is no longer a_ *sudoer*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."] i̸s̸ N̸o̸ l̸o̸n̸g̸e̸r̸ a̸ *S̸u̸d̸o̸e̸r̸*", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _از مقام سودو ربات برکنار شد_", 0, "md")
    end
@@ -313,7 +313,7 @@ else
     if lang then
   return tdcli.sendMessage(data.chat_id_, "", 0, "_کاربر یافت نشد_", 0, "md")
    else
-  return tdcli.sendMessage(data.chat_id_, "", 0, "*User Not Found*", 0, "md")
+  return tdcli.sendMessage(data.chat_id_, "", 0, "✦E̸r̸o̸r̸r̸✦\n ✘U̸s̸e̸r̸ N̸o̸t̸ F̸o̸u̸n̸d̸✘", 0, "md")
       end
    end
 end
@@ -332,7 +332,7 @@ end
     if cmd == "adminprom" then
 if is_admin1(tonumber(data.id_)) then
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is already an_ *admin*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."] i̸s̸ a̸l̸r̸e̸a̸d̸y̸ a̸n̸ *a̸d̸m̸i̸n̸*", 0, "md")
   else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _از قبل ادمین ربات بود_", 0, "md")
       end
@@ -340,7 +340,7 @@ if is_admin1(tonumber(data.id_)) then
 	    table.insert(_config.admins, {tonumber(data.id_), user_name})
 		save_config()
      if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _has been promoted as_ *admin*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."] h̸a̸s̸ b̸e̸e̸n̸ p̸r̸o̸m̸o̸t̸e̸d̸ a̸s̸ *a̸d̸m̸i̸n̸*", 0, "md")
     else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _به مقام ادمین ربات منتصب شد_", 0, "md")
    end
@@ -349,7 +349,7 @@ end
 	local nameid = index_function(tonumber(data.id_))
 if not is_admin1(data.id_) then
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is not a_ *admin*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."] i̸s̸ N̸o̸t̸ a̸ *a̸d̸m̸i̸n̸*", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _از قبل ادمین ربات نبود_", 0, "md")
       end
@@ -357,7 +357,7 @@ if not is_admin1(data.id_) then
 		table.remove(_config.admins, nameid)
 		save_config()
     if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _has been demoted from_ *admin*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."] h̸a̸s̸ b̸e̸e̸n̸ d̸e̸m̸o̸t̸e̸d̸ f̸r̸o̸m̸ *a̸d̸m̸i̸n̸*", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _از مقام ادمین ربات برکنار شد_", 0, "md")
    end
@@ -365,7 +365,7 @@ end
     if cmd == "visudo" then
 if already_sudo(tonumber(data.id_)) then
   if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is already a_ *sudoer*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."] i̸s̸ a̸l̸r̸e̸a̸d̸y̸ A̸ *S̸u̸d̸o̸e̸r̸*", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _از قبل سودو ربات بود_", 0, "md")
       end
@@ -374,7 +374,7 @@ if already_sudo(tonumber(data.id_)) then
 		save_config()
      reload_plugins(true)
   if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is now_ *sudoer*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."] i̸s̸ n̸o̸w̸ *S̸u̸d̸o̸e̸r̸*", 0, "md")
   else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _به مقام سودو ربات منتصب شد_", 0, "md")
    end
@@ -382,7 +382,7 @@ end
     if cmd == "desudo" then
      if not already_sudo(data.id_) then
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is not a_ *sudoer*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."] i̸s̸ N̸o̸t̸ a̸ *S̸u̸d̸o̸e̸r̸*", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _از قبل سودو ربات نبود_", 0, "md")
       end
@@ -391,7 +391,7 @@ end
 		save_config()
      reload_plugins(true) 
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is no longer a_ *sudoer*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."] i̸s̸ N̸o̸ l̸o̸n̸g̸e̸r̸ a̸ *s̸u̸d̸o̸e̸r̸*", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _از مقام سودو ربات برکنار شد_", 0, "md")
       end
@@ -400,7 +400,7 @@ else
     if lang then
   return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر یافت نشد_", 0, "md")
    else
-  return tdcli.sendMessage(arg.chat_id, "", 0, "*User Not Found*", 0, "md")
+  return tdcli.sendMessage(arg.chat_id, "", 0, "✦E̸r̸o̸r̸r̸✦\n ✘U̸s̸e̸r̸ N̸o̸t̸ F̸o̸u̸n̸d̸✘", 0, "md")
       end
    end
 end
@@ -419,7 +419,7 @@ end
     if cmd == "adminprom" then
 if is_admin1(tonumber(data.id_)) then
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is already an_ *admin*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."] i̸s̸ a̸l̸r̸e̸a̸d̸y̸ a̸n̸ *a̸d̸m̸i̸n̸*", 0, "md")
   else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _از قبل ادمین ربات بود_", 0, "md")
       end
@@ -427,7 +427,7 @@ if is_admin1(tonumber(data.id_)) then
 	    table.insert(_config.admins, {tonumber(data.id_), user_name})
 		save_config()
      if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _has been promoted as_ *admin*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."] h̸a̸s̸ b̸e̸e̸n̸ P̸r̸o̸m̸o̸t̸e̸d̸ a̸s̸ *a̸d̸m̸i̸n̸*", 0, "md")
     else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _به مقام ادمین ربات منتصب شد_", 0, "md")
    end
@@ -436,7 +436,7 @@ end
 	local nameid = index_function(tonumber(data.id_))
 if not is_admin1(data.id_) then
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is not a_ *admin*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."] i̸s̸ N̸o̸t̸ a̸ *a̸d̸m̸i̸n̸*", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _از قبل ادمین ربات نبود_", 0, "md")
       end
@@ -444,7 +444,7 @@ if not is_admin1(data.id_) then
 		table.remove(_config.admins, nameid)
 		save_config()
     if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _has been demoted from_ *admin*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."] h̸a̸s̸ b̸e̸e̸n̸ d̸e̸m̸o̸t̸e̸d̸ f̸r̸o̸m̸ *a̸d̸m̸i̸n̸*", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _از مقام ادمین ربات برکنار شد_", 0, "md")
    end
@@ -452,7 +452,7 @@ end
     if cmd == "visudo" then
 if already_sudo(tonumber(data.id_)) then
   if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is already a_ *sudoer*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."] i̸s̸ a̸l̸r̸e̸a̸d̸y̸ a̸ *S̸u̸d̸o̸e̸r̸*", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _از قبل سودو ربات بود_", 0, "md")
       end
@@ -461,7 +461,7 @@ if already_sudo(tonumber(data.id_)) then
 		save_config()
      reload_plugins(true)
   if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is now_ *sudoer*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."] i̸s̸ n̸o̸w̸ *S̸u̸d̸o̸e̸r̸*", 0, "md")
   else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _به مقام سودو ربات منتصب شد_", 0, "md")
    end
@@ -469,7 +469,7 @@ end
     if cmd == "desudo" then
      if not already_sudo(data.id_) then
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is not a_ *sudoer*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."] i̸s̸ n̸o̸t̸ a̸ *S̸u̸d̸o̸e̸r̸*", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _از قبل سودو ربات نبود_", 0, "md")
       end
@@ -478,7 +478,7 @@ end
 		save_config()
      reload_plugins(true) 
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is no longer a_ *sudoer*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."] i̸s̸ n̸o̸ l̸o̸n̸g̸e̸r̸ a̸ *S̸u̸d̸o̸e̸r̸*", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _از مقام سودو ربات برکنار شد_", 0, "md")
       end
@@ -487,7 +487,7 @@ else
     if lang then
   return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر یافت نشد_", 0, "md")
    else
-  return tdcli.sendMessage(arg.chat_id, "", 0, "*User Not Found*", 0, "md")
+  return tdcli.sendMessage(arg.chat_id, "", 0, "✦E̸r̸o̸r̸r̸✦\n ✘U̸s̸e̸r̸ N̸o̸t̸ F̸o̸u̸n̸d̸✘", 0, "md")
       end
    end
 end
@@ -507,7 +507,7 @@ local function pre_process(msg)
 			if lang then
 				tdcli.sendMessage(msg.to.id, msg.id_, 1, '_گروه به مدت 1 روز شارژ شد. لطفا با سودو برای شارژ بیشتر تماس بگیرید. در غیر اینصورت گروه شما از لیست ربات حذف و ربات گروه را ترک خواهد کرد._', 1, 'md')
 			else
-				tdcli.sendMessage(msg.to.id, msg.id_, 1, '_Group charged 1 day. to recharge the robot contact with the sudo. With the completion of charging time, the group removed from the robot list and the robot will leave the group._', 1, 'md')
+				tdcli.sendMessage(msg.to.id, msg.id_, 1, 'G̸r̸o̸u̸p̸ c̸h̸a̸r̸g̸e̸d̸ 1̸ d̸a̸y̸. t̸o̸ r̸e̸c̸h̸a̸r̸g̸e̸ t̸h̸e̸ r̸o̸b̸o̸t̸ c̸o̸n̸t̸a̸c̸t̸ w̸i̸t̸h̸ t̸h̸e̸ s̸u̸d̸o̸. W̸i̸t̸h̸ t̸h̸e̸ c̸o̸m̸p̸l̸e̸t̸i̸o̸n̸ o̸f̸ c̸h̸a̸r̸g̸i̸n̸g̸ t̸i̸m̸e̸, t̸h̸e̸ g̸r̸o̸u̸p̸ r̸e̸m̸o̸v̸e̸d̸ f̸r̸o̸m̸ t̸h̸e̸ r̸o̸b̸o̸t̸ l̸i̸s̸t̸ a̸n̸d̸ t̸h̸e̸ r̸o̸b̸o̸t̸ w̸i̸l̸l̸ l̸e̸a̸v̸e̸ t̸h̸e̸ g̸r̸o̸u̸p̸.', 1, 'md')
 			end
 		end
 		if chex and not exd and msg.from.id ~= SUDO and not is_sudo(msg) then
@@ -603,14 +603,14 @@ end
 if is_sudo(msg) then
    		if ((matches[1]:lower() == 'add' and not Clang) or (matches[1] == "افزودن" and Clang)) and not redis:get('ExpireDate:'..msg.to.id) then
 			redis:set('ExpireDate:'..msg.to.id,true)
-			redis:setex('ExpireDate:'..msg.to.id, 180, true)
+			redis:setex('ExpireDate:'..msg.to.id, 1899, true)
 				if not redis:get('CheckExpire::'..msg.to.id) then
 					redis:set('CheckExpire::'..msg.to.id,true)
 				end
 				if lang then
 					tdcli.sendMessage(msg.to.id, msg.id_, 1, '_گروه به مدت 3 دقیقه برای اجرای تنظیمات شارژ میباشد._', 1, 'md')
 				else
-					tdcli.sendMessage(msg.to.id, msg.id_, 1, '_Group charged 3 minutes  for settings._', 1, 'md')
+					tdcli.sendMessage(msg.to.id, msg.id_, 1, '*✦Done!* \n G̸r̸o̸u̸p̸ c̸h̸a̸r̸g̸e̸d̸ 3̸ d̸a̸y̸s̸ m̸i̸n̸u̸t̸e̸s̸ f̸o̸r̸ s̸e̸t̸t̸i̸n̸g̸s̸.', 1, 'md')
 				end
 		end
 		if ((matches[1] == 'rem' and not Clang) or (matches[1] == "حذف گروه" and Clang)) then
@@ -628,9 +628,9 @@ if is_sudo(msg) then
 				tdcli.changeChatMemberStatus(matches[2], our_id, 'Left', dl_cb, nil)
 				tdcli.sendMessage(SUDO, msg.id_, 1, 'ربات با موفقیت از گروه '..matches[2]..' خارج شد.', 1,'md')
 			else
-				tdcli.sendMessage(matches[2], 0, 1, '_Robot left the group._\n*For more information contact The SUDO.*', 1, 'md')
+				tdcli.sendMessage(matches[2], 0, 1, '*✦Done!* \n R̸o̸b̸o̸t̸ l̸e̸f̸t̸ t̸h̸e̸ g̸r̸o̸u̸p̸\n̸*F̸o̸r̸ m̸o̸r̸e̸ i̸n̸f̸o̸r̸m̸a̸t̸i̸o̸n̸ c̸o̸n̸t̸a̸c̸t̸ T̸h̸e̸ S̸U̸D̸O̸.*', 1, 'md')
 				tdcli.changeChatMemberStatus(matches[2], our_id, 'Left', dl_cb, nil)
-				tdcli.sendMessage(SUDO, msg.id_, 1, '*Robot left from under group successfully:*\n\n`'..matches[2]..'`', 1,'md')
+				tdcli.sendMessage(SUDO, msg.id_, 1, '*✦Done!* \n R̸o̸b̸o̸t̸ l̸e̸f̸t̸ f̸r̸o̸m̸ u̸n̸d̸e̸r̸ g̸r̸o̸u̸p̸ s̸u̸c̸c̸e̸s̸s̸f̸u̸l̸l̸y̸:\n\n`'..matches[2]..'`', 1,'md')
 			end
 		end
 		if ((matches[1]:lower() == 'charge' and not Clang) or (matches[1] == "شارژ" and Clang)) and matches[2] and matches[3] then
