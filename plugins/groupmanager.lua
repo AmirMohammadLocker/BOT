@@ -3428,311 +3428,54 @@ end
 if (matches[1] == "help" and not Clang) and is_mod(msg) then
 if not lang then
 text = [[
-*Fiery Bot Commands:*
-
-*!setowner* `[username|id|reply]` 
-_Set Group Owner(Multi Owner)_
-
-*!remowner* `[username|id|reply]` 
- _Remove User From Owner List_
-
-*!promote* `[username|id|reply]` 
-_Promote User To Group Admin_
-
-*!demote* `[username|id|reply]` 
-_Demote User From Group Admins List_
-
-*!setflood* `[1-50]`
-_Set Flooding Number_
-
-*!setchar* `[Number]`
-_Set Flooding Characters_
-
-*!setfloodtime* `[1-10]`
-_Set Flooding Time_
-
-*!silent* `[username|id|reply]` 
-_Silent User From Group_
-
-*!unsilent* `[username|id|reply]` 
-_Unsilent User From Group_
-
-*!kick* `[username|id|reply]` 
-_Kick User From Group_
-
-*!ban* `[username|id|reply]` 
-_Ban User From Group_
-
-*!unban* `[username|id|reply]` 
-_UnBan User From Group_
-
-*!whitelist* [+-] `[username|id|reply]` 
-_Add Or Remove User From White List_
-
-*!res* `[username]`
-_Show User ID_
-
-*!id* `[reply]`
-_Show User ID_
-
-*!whois* `[id]`
-_Show User's Username And Name_
-
-*!lock* `[link | join | tag | edit | arabic | webpage | bots | spam | flood | markdown | mention | pin | cmds]`
-_If This Actions Lock, Bot Check Actions And Delete Them_
-
-*!unlock* `[link | tag | edit | arabic | webpage | bots | spam | flood | markdown | mention | pin]`
-_If This Actions Unlock, Bot Not Delete Them_
-
-*!mute* `[gif | photo | document | sticker | keyboard | video | text | forward | location | audio | voice | contact | all]`
-_If This Actions Lock, Bot Check Actions And Delete Them_
-
-*!unmute* `[gif | photo | document | sticker | keyboard | video | text | forward | location | audio | voice | contact | all]`
-_If This Actions Unlock, Bot Not Delete Them_
-
-*!set*`[rules | name | photo | link | about | welcome]`
-_Bot Set Them_
-
-*!clean* `[bans | mods | bots | rules | about | silentlist | filtelist | welcome]`   
-_Bot Clean Them_
-
-*!filter* `[word]`
-_Word filter_
-
-*!unfilter* `[word]`
-_Word unfilter_
-
-*!pin* `[reply]`
-_Pin Your Message_
-
-*!unpin* 
-_Unpin Pinned Message_
-
-*!welcome enable/disable*
-_Enable Or Disable Group Welcome_
-
-*!settings*
-_Show Group Settings_
-
-*!mutelist*
-_Show Mutes List_
-
-*!silentlist*
-_Show Silented Users List_
-
-*!filterlist*
-_Show Filtered Words List_
-
-*!banlist*
-_Show Banned Users List_
-
-*!ownerlist*
-_Show Group Owners List_ 
-
-*!modlist* 
-_Show Group Moderators List_
-
-*!whitelist* 
-_Show Group White List Users_
-
-*!rules*
-_Show Group Rules_
-
-*!about*
-_Show Group Description_
-
-*!id*
-_Show Your And Chat ID_
-
-*!gpinfo*
-_Show Group Information_
-
-*!newlink*
-_Create A New Link_
-
-*!link*
-_Show Group Link_
-
-*!linkpv*
-_Send Group Link In Your Private Message_
-
-*!setwelcome [text]*
-_set Welcome Message_
-
-*!setlang [fa | en]*
-_Set Persian/English Language_
-
-*!setcmd [fa | en]*
-_Set CMD Persian/English Language_
-
-*!helptools*
-_Show Tools Help_
-
-*!helpfun*
-_Show Fun Help_
-
-_You Can Use_ *[!/#]* _To Run The Commands_
-_This Help List Only For_ *Moderators/Owners!*
-_Its Means, Only Group_ *Moderators/Owners* _Can Use It!_
-
-*Good luck ;)*]]
+کاربر گرامـي توجہ داشته باشید که براے رفتن به بخش ها می بایست کلمه زیر بخش دلخواه را ارسال کنید
+—--راهنماے کُلی---
+✯بخش ❶
+✷`راهنماے قفل ها`
+✯بخش ❷
+✷`راهنماے بیصدا ها`
+✯بخش ❸
+✷`راهنماے مدیران`
+✯بخش ❹
+✷`راهنماے پاکسازے`
+✯بخش ❺
+✷`راهنماے اعضا`
+✯بخش ❻
+✷`راهنماے بازاریابے`
+✯بخش ❼
+✷`راهنماے سرگرمی`
+✯بخش ❽
+✷`راهنماے پشتیبانی`
+✯بخش ❾
+✷`انواع لیست ها`
+✯بخش ❿
+✷`راهنماے مُدیر ربات]]
 
 elseif lang then
 
 text = [[
-_دستورات ربات لوکر:_
-
-*!setowner* `[username|id|reply]`
-_انتخاب مالک گروه(قابل انتخاب چند مالک)_
-
-*!remowner* `[username|id|reply]`
-_حذف کردن فرد از فهرست مالکان گروه_
-
-*!promote* `[username|id|reply]`
-_ارتقا مقام کاربر به مدیر گروه_
-
-*!demote* `[username|id|reply]`
-_تنزیل مقام مدیر به کاربر_
-
-*!setflood* `[1-50]`
-_تنظیم حداکثر تعداد پیام مکرر_
-
-*!setchar* `[Number]`
-_تنظیم حداکثر کاراکتر پیام مکرر_
-
-*!setfloodtime* `[1-10]`
-_تنظیم زمان ارسال پیام مکرر_
-
-*!silent* `[username|id|reply]`
-_بیصدا کردن کاربر در گروه_
-
-*!unsilent* `[username|id|reply]`
-_در آوردن کاربر از حالت بیصدا در گروه_
-
-*!kick* `[username|id|reply]`
-_حذف کاربر از گروه_
-
-*!ban* `[username|id|reply]`
-_مسدود کردن کاربر از گروه_
-
-*!unban* `[username|id|reply]`
-_در آوردن از حالت مسدودیت کاربر از گروه_
-
-*!whitelist* `[+|-]` `[یوزرنیم|ایدی|ریپلی]` 
-_افزودن افراد به لیست سفید_
-
-*!res* `[username]`
-_نمایش شناسه کاربر_
-
-*!id* `[reply]`
-نمایش شناسه کاربر
-
-*!whois* `[id]`
-_نمایش نام کاربر, نام کاربری و اطلاعات حساب_
-
-*!lock* `[link | tag | edit | arabic | webpage | bots | spam | flood | markdown | mention | pin]`
-_در صورت قفل بودن فعالیت ها, ربات آنهارا حذف خواهد کرد_
-
-*!unlock* `[link | tag | edit | arabic | webpage | bots | spam | flood | markdown | mention | pin]`
-_در صورت قفل نبودن فعالیت ها, ربات آنهارا حذف نخواهد کرد_
-
-*!mute* `[gif | photo | document | sticker | keyboard | video | text | forward | location | audio | voice | contact | all]`
-_در صورت بیصدد بودن فعالیت ها, ربات آنهارا حذف خواهد کرد_
-
-*!unmute* `[gif | photo | document | sticker | keyboard | video | text | forward | location | audio | voice | contact | all]`
-_در صورت بیصدا نبودن فعالیت ها, ربات آنهارا حذف نخواهد کرد_
-
-*!set*`[rules | name | photo | link | about | welcome]`
-_ربات آنهارا ثبت خواهد کرد_
-
-*!clean* `[bans | mods | rules | about | silentlist | filterlist | welcome]`
-_ربات آنهارا پاک خواهد کرد_
-
-*!filter* `[word]`
-_فیلتر‌کلمه مورد نظر_
-
-*!unfilter* `[word]`
-_ازاد کردن کلمه مورد نظر_
-
-*!pin* `[reply]`
-_ربات پیام شمارا در گروه سنجاق خواهد کرد_
-
-*!unpin *
-ربات پیام سنجاق شده در گروه را حذف خواهد کرد
-
-*!welcome* `enable/disable`
-_فعال یا غیرفعال کردن خوشامد گویی_
-
-*!settings*
-_نمایش تنظیمات گروه_
-
-*!mutelist*
-_نمایش فهرست بیصدا های گروه_
-
-*!silentlist*
-_نمایش فهرست افراد بیصدا_
-
-*!filterlist*
-_نمایش لیست کلمات فیلتر شده_
-
-*!banlist*
-_نمایش افراد مسدود شده از گروه_
-
-*!ownerlist*
-_نمایش فهرست مالکان گروه_
-
-*!modlist*
-_نمایش فهرست مدیران گروه_
-
-*!whitelist*
-_نمایش افراد سفید شده از گروه_
-
-*!rules*
-_نمایش قوانین گروه_
-
-*!about*
-_نمایش درباره گروه_
-
-*!id*
-_نمایش شناسه شما و گروه_
-
-*!gpinfo*
-_نمایش اطلاعات گروه_
-
-*!newlink*
-_ساخت لینک جدید_
-
-*!setlink*
-_تنظیم لینک جدید_
-
-*!link*
-_نمایش لینک گروه_
-
-*!linkpv*
-_ارسال لینک گروه به چت خصوصی شما_
-
-*!setwelcome* `[text]`
-_ثبت پیام خوش آمد گویی_
-
-*!setlang* `[fa | en]`
-_تنظیم زبان ربات به فارسی یا انگلیسی_
-
-*!setcmd* `[fa | en]`
-_تنظیم زبان دستورات ربات به فارسی یا انگلیسی_
-
-*!helptools*
-_نمایش راهنمای ابزار_
-
-*!helpfun*
-_نمایش راهنمای سرگرمی_
-
-_شما میتوانید از [!/#] در اول دستورات برای اجرای آنها بهره بگیرید_
-
-_این راهنما فقط برای مدیران/مالکان گروه میباشد!_
-
-_این به این معناست که فقط مدیران/مالکان گروه میتوانند از دستورات بالا استفاده کنند!_
-
-_موفق باشید_ *;)*
+کاربر گرامـي توجہ داشته باشید که براے رفتن به بخش ها می بایست کلمه زیر بخش دلخواه را ارسال کنید
+—--راهنماے کُلی---
+✯بخش ❶
+✷`راهنماے قفل ها`
+✯بخش ❷
+✷`راهنماے بیصدا ها`
+✯بخش ❸
+✷`راهنماے مدیران`
+✯بخش ❹
+✷`راهنماے پاکسازے`
+✯بخش ❺
+✷`راهنماے اعضا`
+✯بخش ❻
+✷`راهنماے بازاریابے`
+✯بخش ❼
+✷`راهنماے سرگرمی`
+✯بخش ❽
+✷`راهنماے پشتیبانی`
+✯بخش ❾
+✷`انواع لیست ها`
+✯بخش ❿
+✷`راهنماے مُدیر ربات
 ]]
 end
 return text..msg_caption
@@ -3741,315 +3484,54 @@ end
 if (matches[1] == "راهنما" and Clang) and is_mod(msg) then
 if not lang then
 text = [[
-*Fiery Bot Commands:*
-
-*مالک* `[username|id|reply]` 
-_Set Group Owner(Multi Owner)_
-
-*حذف مالک* `[username|id|reply]` 
- _Remove User From Owner List_
-
-*مدیر* `[username|id|reply]` 
-_Promote User To Group Admin_
-
-*حذف مدیر* `[username|id|reply]` 
-_Demote User From Group Admins List_
-
-*تنظیم پیام مکرر* `[1-50]`
-_Set Flooding Number_
-
-*حداکثر حروف مجاز* `[عدد]`
-_Set Flooding Characters_
-
-*تنظیم زمان بررسی* `[1-10]`
-_Set Flooding Time_
-
-*سکوت* `[username|id|reply]` 
-_Silent User From Group_
-
-*حذف سکوت* `[username|id|reply]` 
-_Unsilent User From Group_
-
-*اخراج* `[username|id|reply]` 
-_Kick User From Group_
-
-*بن* `[username|id|reply]` 
-_Ban User From Group_
-
-*حذف بن* `[username|id|reply]` 
-_UnBan User From Group_
-
-*لیست سفید* [+-] `[username|id|reply]` 
-_Add Or Remove User From White List_
-
-*کاربری* `[username]`
-_Show User ID_
-
-*ایدی* `[reply]`
-_Show User ID_
-
-*شناسه* `[id]`
-_Show User's Username And Name_
-
-*قفل* `[لینک | ورود | تگ | ویرایش | عربی | وب | ربات |هرزنامه | پیام مکرر | فونت | فراخوانی | سنجاق]`
-_If This Actions Lock, Bot Check Actions And Delete Them_
-
-*باز کردن* `[لینک | ورود | تگ | ویرایش | عربی | وب | ربات |هرزنامه | پیام مکرر | فونت | فراخوانی | سنجاق]`
-_If This Actions Unlock, Bot Not Delete Them_
-
-*بیصدا* `[همه | تصاویر متحرک | عکس | اسناد | برچسب | صفحه کلید | فیلم | متن | نقل قول | موقعیت | اهنگ | صدا | مخاطب | کیبورد شیشه ای|بازی|خدمات تلگرام]`
-_If This Actions Lock, Bot Check Actions And Delete Them_
-
-*باصدا* `[همه | تصاویر متحرک | عکس | اسناد | برچسب | صفحه کلید | فیلم | متن | نقل قول | موقعیت | اهنگ | صدا | مخاطب | کیبورد شیشه ای|بازی|خدمات تلگرام]`
-_If This Actions Unlock, Bot Not Delete Them_
-
-*تنظیم*`[قوانین | نام | لینک | درباره | خوشامد]`
-_Bot Set Them_
-
-*پاک کردن* `[بن | مدیران | ربات | قوانین | درباره | لیست سکوت | خوشامد]`   
-_Bot Clean Them_
-
-*فیلتر* `[word]`
-_Word filter_
-
-*حذف فیلتر* `[word]`
-_Word unfilter_
-
-*سنجاق* `[reply]`
-_Pin Your Message_
-
-*حذف سنجاق* 
-_Unpin Pinned Message_
-
-*خوشامد فعال/غیرفعال*
-_Enable Or Disable Group Welcome_
-
-*تنظیمات*
-_Show Group Settings_
-
-*لیست بیصدا*
-_Show Mutes List_
-
-*لیست سکوت*
-_Show Silented Users List_
-
-*لیست فیلتر*
-_Show Filtered Words List_
-
-*لیست بن*
-_Show Banned Users List_
-
-*لیست مالکان*
-_Show Group Owners List_ 
-
-*لیست مدیران* 
-_Show Group Moderators List_
-
-*لیست سفید* 
-_Show Group White List Users_
-
-*قوانین*
-_Show Group Rules_
-
-*درباره*
-_Show Group Description_
-
-*ایدی*
-_Show Your And Chat ID_
-
-*اطلاعات گروه*
-_Show Group Information_
-
-*لینک جدید*
-_Create A New Link_
-
-*تنظیم لینک*
-_Set A New Link_
-
-*لینک*
-_Show Group Link_
-
-*لینک خصوصی*
-_Send Group Link In Your Private Message_
-
-*تنظیم خوشامد [text]*
-_set Welcome Message_
-
-*زبان [فارسی | انگلیسی]*
-_Set Persian/English Language_
-
-*دستورات [فارسی | انگلیسی]*
-_Set CMD Persian/English Language_
-
-*راهنمای ابزار*
-_Show Tools Help_
-
-*راهنمای سرگرمی*
-_Show Fun Help_
-
-_This Help List Only For_ *Moderators/Owners!*
-_Its Means, Only Group_ *Moderators/Owners* _Can Use It!_
-
-*Good luck ;)*]]
+کاربر گرامـي توجہ داشته باشید که براے رفتن به بخش ها می بایست کلمه زیر بخش دلخواه را ارسال کنید
+—--راهنماے کُلی---
+✯بخش ❶
+✷`راهنماے قفل ها`
+✯بخش ❷
+✷`راهنماے بیصدا ها`
+✯بخش ❸
+✷`راهنماے مدیران`
+✯بخش ❹
+✷`راهنماے پاکسازے`
+✯بخش ❺
+✷`راهنماے اعضا`
+✯بخش ❻
+✷`راهنماے بازاریابے`
+✯بخش ❼
+✷`راهنماے سرگرمی`
+✯بخش ❽
+✷`راهنماے پشتیبانی`
+✯بخش ❾
+✷`انواع لیست ها`
+✯بخش ❿
+✷`راهنماے مُدیر ربات]]
 
 elseif lang then
 
 text = [[
-*دستورات ربات لوکر:*
-
-*مالک* `[یوزرنیم|ایدی|ریپلی]` 
-_انتخاب مالک گروه(قابل انتخاب چند مالک)_
-
-*حذف مالک* `[یوزرنیم|ایدی|ریپلی]` 
- _حذف کردن فرد از فهرست مالکان گروه_
-
-*مدیر* `[یوزرنیم|ایدی|ریپلی]` 
-_ارتقا مقام کاربر به مدیر گروه_
-
-*حذف مدیر* `[یوزرنیم|ایدی|ریپلی]` 
-_تنزیل مقام مدیر به کاربر_
-
-*تنظیم پیام مکرر* `[2-50]`
-_تنظیم حداکثر تعداد پیام مکرر_
-
-*حداکثر حروف مجاز* `[عدد]`
-_تنظیم حداکثر کاراکتر پیام مکرر_
-
-*تنظیم زمان بررسی* `[1-10]`
-_تنظیم زمان ارسال پیام مکرر_
-
-*سکوت* `[یوزرنیم|ایدی|ریپلی]` 
-_بیصدا کردن کاربر در گروه_
-
-*حذف سکوت* `[یوزرنیم|ایدی|ریپلی]` 
-_در آوردن کاربر از حالت بیصدا در گروه_
-
-*اخراج* `[یوزرنیم|ایدی|ریپلی]` 
-_حذف کاربر از گروه_
-
-*بن* `[یوزرنیم|ایدی|ریپلی]` 
-_مسدود کردن کاربر از گروه_
-
-*حذف بن* `[یوزرنیم|ایدی|ریپلی]` 
-_در آوردن از حالت مسدودیت کاربر از گروه_
-
-*کاربری* `[یوزرنیم]`
-_نمایش شناسه کاربر_
-
-*ایدی* `[ریپلی]`
-_نمایش شناسه کاربر_
-
-*شناسه* `[ایدی]`
-_نمایش نام کاربر, نام کاربری و اطلاعات حساب_
-
-*قفل* `[لینک | ورود | تگ | ویرایش | عربی | وب | ربات |هرزنامه | پیام مکرر | فونت | فراخوانی | سنجاق]`
-_در صورت قفل بودن فعالیت ها, ربات آنهارا حذف خواهد کرد_
-
-*باز کردن* `[لینک | ورود | تگ | ویرایش | عربی | وب | ربات |هرزنامه | پیام مکرر | فونت | فراخوانی | سنجاق]`
-_در صورت قفل نبودن فعالیت ها, ربات آنهارا حذف نخواهد کرد_
-
-*بیصدا* `[همه | تصاویر متحرک | عکس | اسناد | برچسب | صفحه کلید | فیلم | متن | نقل قول | موقعیت | اهنگ | صدا | مخاطب | کیبورد شیشه ای|بازی|خدمات تلگرام]`
-_در صورت بیصدا بودن فعالیت ها, ربات آنهارا حذف خواهد کرد_
-
-*باصدا* `[همه | تصاویر متحرک | عکس | اسناد | برچسب | صفحه کلید | فیلم | متن | نقل قول | موقعیت | اهنگ | صدا | مخاطب | کیبورد شیشه ای|بازی|خدمات تلگرام]`
-_در صورت بیصدا نبودن فعالیت ها, ربات آنهارا حذف نخواهد کرد_
-
-*تنظیم*`[قوانین | نام | لینک | درباره | خوشامد]`
-_ربات آنهارا ثبت خواهد کرد_
-
-*پاک کردن* `[بن | مدیران | ربات | قوانین | درباره | لیست سکوت | خوشامد]`   
-_ربات آنهارا پاک خواهد کرد_
-
-*لیست سفید* `[+|-]` `[یوزرنیم|ایدی|ریپلی]` 
-_افزودن افراد به لیست سفید_
-
-*فیلتر* `[کلمه]`
-_فیلتر‌کلمه مورد نظر_
-
-*حذف فیلتر* `[کلمه]`
-_ازاد کردن کلمه مورد نظر_
-
-*سنجاق* `[reply]`
-_ربات پیام شمارا در گروه سنجاق خواهد کرد_
-
-*حذف سنجاق* 
-_ربات پیام سنجاق شده در گروه را حذف خواهد کرد_
-
-*!خوشامد فعال/غیرفعال*
-_فعال یا غیرفعال کردن خوشامد گویی_
-
-*تنظیمات*
-_نمایش تنظیمات گروه_
-
-*لیست بیصدا*
-_نمایش فهرست بیصدا های گروه_
-
-*لیست سکوت*
-_نمایش فهرست افراد بیصدا_
-
-*لیست فیلتر*
-_نمایش لیست کلمات فیلتر شده_
-
-*لیست سفید*
-_نمایش افراد سفید شده از گروه_
-
-*لیست بن*
-_نمایش افراد مسدود شده از گروه_
-
-*لیست مالکان*
-_نمایش فهرست مالکان گروه_ 
-
-*لیست مدیران* 
-_نمایش فهرست مدیران گروه_
-
-*قوانین*
-_نمایش قوانین گروه_
-
-*درباره*
-_نمایش درباره گروه_
-
-*ایدی*
-_نمایش شناسه شما و گروه_
-
-*اطلاعات گروه*
-_نمایش اطلاعات گروه_
-
-*لینک جدید*
-_ساخت لینک جدید_
-
-*لینک*
-_نمایش لینک گروه_
-
-*تنظیم لینک*
-_تنظیم لینک جدید برای گروه_
-
-*لینک خصوصی*
-_ارسال لینک گروه به چت خصوصی شما_
-
-*زبان انگلیسی*
-_تنظیم زبان انگلیسی_
-
-*زبان فارسی*
-_تنظیم زبان فارسی_
-
-*دستورات انگلیسی*
-_تنظیم دستورات انگلیسی_
-
-*دستورات فارسی*
-_تنظیم دستورات فارسی_
-
-*تنظیم خوشامد [متن]*
-_ثبت پیام خوش آمد گویی_
-
-*راهنمای ابزار*
-_نمایش راهنمای ابزار_
-
-*راهنمای سرگرمی*
-_نمایش راهنمای سرگرمی_
-
-_این راهنما فقط برای مدیران/مالکان گروه میباشد!
-این به این معناست که فقط مدیران/مالکان گروه میتوانند از دستورات بالا استفاده کنند!_
-*موفق باشید ;)*]]
+کاربر گرامـي توجہ داشته باشید که براے رفتن به بخش ها می بایست کلمه زیر بخش دلخواه را ارسال کنید
+—--راهنماے کُلی---
+✯بخش ❶
+✷`راهنماے قفل ها`
+✯بخش ❷
+✷`راهنماے بیصدا ها`
+✯بخش ❸
+✷`راهنماے مدیران`
+✯بخش ❹
+✷`راهنماے پاکسازے`
+✯بخش ❺
+✷`راهنماے اعضا`
+✯بخش ❻
+✷`راهنماے بازاریابے`
+✯بخش ❼
+✷`راهنماے سرگرمی`
+✯بخش ❽
+✷`راهنماے پشتیبانی`
+✯بخش ❾
+✷`انواع لیست ها`
+✯بخش ❿
+✷`راهنماے مُدیر ربات]]
 end
 return text..msg_caption
 end
@@ -4308,4 +3790,5 @@ patterns ={
 run=run,
 pre_process = pre_process
 }
---end groupmanager.lua #beyond team#
+--end groupmanager.lua #Locker team#
+-----EDIT-----By-----#@SudoLocker
