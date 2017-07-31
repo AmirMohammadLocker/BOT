@@ -4,7 +4,7 @@ local lang = redis:get(hash)
     -- superuser and admins only (because sudo are always has privilege)
     if not is_admin(msg) then
    if not lang then
-        return '*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ b̸o̸t̸ #A̸d̸m̸i̸n̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..''
+        return '*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ b̸o̸t̸ #A̸d̸m̸i̸n̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'\n#B̸y̸ ❯❯ @'..check_markdown(msg.from.username or '')..''..msg_caption'
 else
      return '✖️شما مُدیر رُبات نیستے✖️'
     end
@@ -85,7 +85,7 @@ local lang = redis:get(hash)
     -- superuser and admins only (because sudo are always has privilege)
       if not is_admin(msg) then
      if not lang then
-        return '*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ b̸o̸t̸ #A̸d̸m̸i̸n̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..''
+        return '*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ b̸o̸t̸ #A̸d̸m̸i̸n̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'\n#B̸y̸ ❯❯ @'..check_markdown(msg.from.username or '')..''..msg_caption'
    else
         return '✖️شما مُدیر رُبات نیستے✖️'
     end
@@ -109,7 +109,7 @@ else
       end data[tostring(groups)][tostring(msg.to.id)] = nil
       save_data(_config.moderation.data, data)
  if not lang then
-  return '✯#G̸r̸o̸u̸p̸ h̸a̸s̸ b̸e̸e̸n̸ #R̸e̸m̸o̸v̸e̸d̸✯'
+  return '✯#G̸r̸o̸u̸p̸ h̸a̸s̸ b̸e̸e̸n̸ #R̸e̸m̸o̸v̸e̸d̸✯ \n#B̸y̸ ❯❯ @'..check_markdown(msg.from.username or '')..''
  else
   return '←گروه #باموفقیت از لیست مُدیریت ما حذف شد✓'
 end
@@ -259,7 +259,7 @@ end
     end
 if administration[tostring(arg.chat_id)]['whitelist'][tostring(data.id_)] then
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!* \n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ a̸l̸r̸e̸a̸d̸y̸ i̸n̸ w̸h̸i̸t̸e̸ #l̸i̸s̸t̸✯ ", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!* \n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` i̸s̸ a̸l̸r̸e̸a̸d̸y̸ i̸n̸ w̸h̸i̸t̸e̸ #l̸i̸s̸t̸✯ \n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
 else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* * از قبل در #لیست سفید بود✓*", 0, "md")
       end
@@ -267,7 +267,7 @@ else
 administration[tostring(arg.chat_id)]['whitelist'][tostring(data.id_)] = user_name
     save_data(_config.moderation.data, administration)
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!* \n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ A̸d̸d̸e̸d̸ t̸o̸ w̸h̸i̸t̸e̸ l̸i̸s̸t̸✯ ", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!* \n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ A̸d̸d̸e̸d̸ t̸o̸ w̸h̸i̸t̸e̸ l̸i̸s̸t̸✯ \n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *بہ لیست سفید #باموفقیت اضافہ شد✓*", 0, "md")
    end
@@ -291,7 +291,7 @@ end
     end
 if not administration[tostring(arg.chat_id)]['whitelist'][tostring(data.id_)] then
     if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!* \n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ N̸o̸t̸ i̸n̸ w̸h̸i̸t̸e̸ #l̸i̸s̸t̸✯ ", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!* \n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` i̸s̸ N̸o̸t̸ i̸n̸ w̸h̸i̸t̸e̸ #l̸i̸s̸t̸✯ \n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').." ", 0, "md")
     else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از قبل در #لیست سفید نبود✓*", 0, "md")
    end
@@ -299,7 +299,7 @@ if not administration[tostring(arg.chat_id)]['whitelist'][tostring(data.id_)] th
 administration[tostring(arg.chat_id)]['whitelist'][tostring(data.id_)] = nil
     save_data(_config.moderation.data, administration)
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ r̸e̸m̸o̸v̸e̸d̸ f̸r̸o̸m̸ w̸h̸i̸t̸e̸ #l̸i̸s̸t̸✯", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ r̸e̸m̸o̸v̸e̸d̸ f̸r̸o̸m̸ w̸h̸i̸t̸e̸ #l̸i̸s̸t̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از لیست سفید #باموفقیت حذف شد✓*", 0, "md")
    end
@@ -321,7 +321,7 @@ user_name = check_markdown(data.first_name_)
 end
 if administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] then
     if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ a̸l̸r̸e̸a̸d̸y̸ a̸ #G̸r̸o̸u̸p̸ #o̸w̸n̸e̸r̸✯", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` i̸s̸ a̸l̸r̸e̸a̸d̸y̸ a̸ #G̸r̸o̸u̸p̸ #o̸w̸n̸e̸r̸✯ \n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از قبل #صاحب گروه بود✓*", 0, "md")
       end
@@ -329,7 +329,7 @@ if administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] then
 administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] = user_name
     save_data(_config.moderation.data, administration)
    if not lang then
-  return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸w̸ t̸h̸e̸ #g̸r̸o̸u̸p̸ #o̸w̸n̸e̸r̸✯", 0, "md")
+  return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸w̸ t̸h̸e̸ #g̸r̸o̸u̸p̸ #o̸w̸n̸e̸r̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
    else
   return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *#باموفقیت بہ مقام صاحب گروه منتصب شد ✓*", 0, "md")
    end
@@ -351,7 +351,7 @@ user_name = check_markdown(data.first_name_)
 end
 if administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] then
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ a̸l̸r̸e̸a̸d̸y̸ a̸ #M̸o̸d̸e̸r̸a̸t̸o̸r̸✯", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` i̸s̸ a̸l̸r̸e̸a̸d̸y̸ a̸ #M̸o̸d̸e̸r̸a̸t̸o̸r̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
 else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* از قبل مُدیر گروه بود ✓", 0, "md")
       end
@@ -359,7 +359,7 @@ else
 administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] = user_name
     save_data(_config.moderation.data, administration)
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ #P̸r̸o̸m̸o̸t̸e̸d̸✯", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ #P̸r̸o̸m̸o̸t̸e̸d̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *به مقام مدیر گروه #منتصب شد✓*", 0, "md")
    end
@@ -381,7 +381,7 @@ user_name = check_markdown(data.first_name_)
 end
 if not administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] then
    if not lang then
-return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸t̸ a̸ G̸r̸o̸u̸p̸ o̸w̸n̸e̸r̸✯", 0, "md")
+return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸t̸ a̸ G̸r̸o̸u̸p̸ o̸w̸n̸e̸r̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
    else
 return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از قبل #صاحب گروه نبود✓*", 0, "md")
       end
@@ -389,7 +389,7 @@ return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"
 administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] = nil
     save_data(_config.moderation.data, administration)
    if not lang then
-return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸ l̸o̸n̸g̸e̸r̸ a̸ G̸r̸o̸u̸p̸ o̸w̸n̸e̸r̸✯", 0, "md")
+return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸ l̸o̸n̸g̸e̸r̸ a̸ G̸r̸o̸u̸p̸ o̸w̸n̸e̸r̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
     else
 return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از مقام #صاحب گروه برکنار شد ✓*", 0, "md")
    end
@@ -409,7 +409,7 @@ user_name = check_markdown(data.first_name_)
 end
 if not administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] then
     if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸t̸ a̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✯", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸t̸ a̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
     else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از قبل #مدیر گروه نبود✓*", 0, "md")
    end
@@ -417,7 +417,7 @@ if not administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] then
 administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] = nil
     save_data(_config.moderation.data, administration)
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ D̸e̸m̸o̸t̸e̸d̸✯", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ D̸e̸m̸o̸t̸e̸d̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از مقام #مدیر گروه برکنار شد ✓*", 0, "md")
    end
@@ -440,7 +440,7 @@ else
     if lang then
   return tdcli.sendMessage(data.chat_id_, "", 0, "_←کاربر یافت نشد✘_", 0, "md")
    else
-  return tdcli.sendMessage(data.chat_id_, "", 0, "✦E̸r̸o̸r̸r̸✦\n ✘U̸s̸e̸r̸ N̸o̸t̸ F̸o̸u̸n̸d̸✘", 0, "md")
+  return tdcli.sendMessage(data.chat_id_, "", 0, "✦E̸r̸o̸r̸r̸✦\n ✘U̸s̸e̸r̸ N̸o̸t̸ F̸o̸u̸n̸d̸✘ \n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
       end
    end
 end
@@ -471,7 +471,7 @@ end
     end
 if administration[tostring(arg.chat_id)]['whitelist'][tostring(data.id_)] then
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!* \n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ a̸l̸r̸e̸a̸d̸y̸ i̸n̸ w̸h̸i̸t̸e̸ #l̸i̸s̸t̸✯", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!* \n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` i̸s̸ a̸l̸r̸e̸a̸d̸y̸ i̸n̸ w̸h̸i̸t̸e̸ #l̸i̸s̸t̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
 else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از قبل در #لیست سفید بود✓*", 0, "md")
       end
@@ -479,7 +479,7 @@ else
 administration[tostring(arg.chat_id)]['whitelist'][tostring(data.id_)] = user_name
     save_data(_config.moderation.data, administration)
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!* \n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ A̸d̸d̸e̸d̸ t̸o̸ w̸h̸i̸t̸e̸ l̸i̸s̸t̸✯", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!* \n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ A̸d̸d̸e̸d̸ t̸o̸ w̸h̸i̸t̸e̸ l̸i̸s̸t̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *بہ لیست سفید #باموفقیت اضافہ شد✓*", 0, "md")
    end
@@ -491,7 +491,7 @@ end
     end
 if not administration[tostring(arg.chat_id)]['whitelist'][tostring(data.id_)] then
     if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!* \n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ N̸o̸t̸ i̸n̸ w̸h̸i̸t̸e̸ #l̸i̸s̸t̸✯ ", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!* \n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` i̸s̸ N̸o̸t̸ i̸n̸ w̸h̸i̸t̸e̸ #l̸i̸s̸t̸✯ \n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
     else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از قبل در #لیست سفید نبود✓*", 0, "md")
    end
@@ -499,7 +499,7 @@ if not administration[tostring(arg.chat_id)]['whitelist'][tostring(data.id_)] th
 administration[tostring(arg.chat_id)]['whitelist'][tostring(data.id_)] = nil
     save_data(_config.moderation.data, administration)
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ r̸e̸m̸o̸v̸e̸d̸ f̸r̸o̸m̸ w̸h̸i̸t̸e̸ #l̸i̸s̸t̸✯", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ r̸e̸m̸o̸v̸e̸d̸ f̸r̸o̸m̸ w̸h̸i̸t̸e̸ #l̸i̸s̸t̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از لیست سفید #باموفقیت حذف شد✓*", 0, "md")
    end
@@ -507,7 +507,7 @@ end
 if cmd == "setowner" then
 if administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] then
     if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ a̸l̸r̸e̸a̸d̸y̸ a̸ #G̸r̸o̸u̸p̸ #o̸w̸n̸e̸r̸✯", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` i̸s̸ a̸l̸r̸e̸a̸d̸y̸ a̸ #G̸r̸o̸u̸p̸ #o̸w̸n̸e̸r̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از قبل #صاحب گروه بود✓*", 0, "md")
       end
@@ -515,7 +515,7 @@ if administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] then
 administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] = user_name
     save_data(_config.moderation.data, administration)
    if not lang then
-  return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸w̸ t̸h̸e̸ #g̸r̸o̸u̸p̸ #o̸w̸n̸e̸r̸✯", 0, "md")
+  return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸w̸ t̸h̸e̸ #g̸r̸o̸u̸p̸ #o̸w̸n̸e̸r̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
    else
   return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *#باموفقیت بہ مقام صاحب گروه منتصب شد ✓*", 0, "md")
    end
@@ -523,7 +523,7 @@ end
   if cmd == "promote" then
 if administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] then
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ a̸l̸r̸e̸a̸d̸y̸ a̸ #M̸o̸d̸e̸r̸a̸t̸o̸r̸✯", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` i̸s̸ a̸l̸r̸e̸a̸d̸y̸ a̸ #M̸o̸d̸e̸r̸a̸t̸o̸r̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
 else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از قبل #مُدیر گروه بود ✓*", 0, "md")
       end
@@ -531,7 +531,7 @@ else
 administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] = user_name
     save_data(_config.moderation.data, administration)
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ #P̸r̸o̸m̸o̸t̸e̸d̸✯", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ #P̸r̸o̸m̸o̸t̸e̸d̸✯", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *به مقام مدیر گروه منتصب شد*", 0, "md")
    end
@@ -539,7 +539,7 @@ end
    if cmd == "remowner" then
 if not administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] then
    if not lang then
-return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸t̸ a̸ G̸r̸o̸u̸p̸ o̸w̸n̸e̸r̸✯", 0, "md")
+return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸t̸ a̸ G̸r̸o̸u̸p̸ o̸w̸n̸e̸r̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
    else
 return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از قبل #صاحب گروه نبود✓*", 0, "md")
       end
@@ -547,7 +547,7 @@ return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"
 administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] = nil
     save_data(_config.moderation.data, administration)
    if not lang then
-return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸ l̸o̸n̸g̸e̸r̸ a̸ G̸r̸o̸u̸p̸ o̸w̸n̸e̸r̸✯", 0, "md")
+return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸ l̸o̸n̸g̸e̸r̸ a̸ G̸r̸o̸u̸p̸ o̸w̸n̸e̸r̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
     else
 return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از مقام #صاحب گروه #باموفقیت برکنار شد✓*", 0, "md")
    end
@@ -555,7 +555,7 @@ end
    if cmd == "demote" then
 if not administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] then
     if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸t̸ a̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✯", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸t̸ a̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
     else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* از قبل مُدیر گروه #نبود✓", 0, "md")
    end
@@ -563,19 +563,19 @@ if not administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] then
 administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] = nil
     save_data(_config.moderation.data, administration)
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ D̸e̸m̸o̸t̸e̸d̸✯", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ D̸e̸m̸o̸t̸e̸d̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از مقام مُدیر گروه #باموفقیت برکنار شُد✓", 0, "md")
    end
 end
    if cmd == "me" then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*"..data.id_.."*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "`["..data.id_.."]`", 0, "md")
 end
     if cmd == "res" then
     if not lang then
      text = "R̸e̸s̸u̸l̸t̸ f̸o̸r̸ `[ "..check_markdown(data.type_.user_.username_).." ]` :\n"
     .. ""..check_markdown(data.title_).."\n"
-    .. " `["..data.id_.."]`"
+    .. " `["..data.id_.."]`\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
   else
      text = " ▪️←اطلاعات کاربر← [ @"..check_markdown(data.type_.user_.username_).." ] :\n"
     .. "▫️←نام کاربر←".. check_markdown(data.title_) .."\n"
@@ -587,7 +587,7 @@ else
     if lang then
   return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر یافت نشد✘_", 0, "md")
    else
-  return tdcli.sendMessage(arg.chat_id, "", 0, "✦E̸r̸o̸r̸r̸✦\n ✘U̸s̸e̸r̸ N̸o̸t̸ F̸o̸u̸n̸d̸✘", 0, "md")
+  return tdcli.sendMessage(arg.chat_id, "", 0, "✦E̸r̸o̸r̸r̸✦\n ✘U̸s̸e̸r̸ N̸o̸t̸ F̸o̸u̸n̸d̸✘\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
       end
    end
 end
@@ -599,7 +599,7 @@ local cmd = arg.cmd
     local administration = load_data(_config.moderation.data)
   if not administration[tostring(arg.chat_id)] then
   if not lang then
-    return tdcli.sendMessage(data.chat_id_, "", 0, "✦E̸r̸o̸r̸r̸✦ \n ✦G̸r̸o̸u̸p̸ i̸s̸ n̸o̸t̸ a̸d̸d̸e̸d̸  \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'", 0, "md")
+    return tdcli.sendMessage(data.chat_id_, "", 0, "✦E̸r̸o̸r̸r̸✦ \n ✦G̸r̸o̸u̸p̸ i̸s̸ n̸o̸t̸ a̸d̸d̸e̸d̸  \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."", 0, "md")
 else
     return tdcli.sendMessage(data.chat_id_, "", 0, "_✘این گروه درلیست مُدیریت ما وجود #ندارد✘_", 0, "md")
      end
@@ -619,7 +619,7 @@ end
     end
 if administration[tostring(arg.chat_id)]['whitelist'][tostring(data.id_)] then
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!* \n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ a̸l̸r̸e̸a̸d̸y̸ i̸n̸ w̸h̸i̸t̸e̸ #l̸i̸s̸t̸✯", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!* \n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` i̸s̸ a̸l̸r̸e̸a̸d̸y̸ i̸n̸ w̸h̸i̸t̸e̸ #l̸i̸s̸t̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
 else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.." *از قبل در #لیست سفید بود✓", 0, "md")
       end
@@ -639,7 +639,7 @@ end
     end
 if not administration[tostring(arg.chat_id)]['whitelist'][tostring(data.id_)] then
     if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!* \n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ N̸o̸t̸ i̸n̸ w̸h̸i̸t̸e̸ #l̸i̸s̸t̸✯ ", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!* \n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` i̸s̸ N̸o̸t̸ i̸n̸ w̸h̸i̸t̸e̸ #l̸i̸s̸t̸✯ \n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
     else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* از قبل در #لیست سفید نبود✓", 0, "md")
    end
@@ -647,7 +647,7 @@ if not administration[tostring(arg.chat_id)]['whitelist'][tostring(data.id_)] th
 administration[tostring(arg.chat_id)]['whitelist'][tostring(data.id_)] = nil
     save_data(_config.moderation.data, administration)
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ r̸e̸m̸o̸v̸e̸d̸ f̸r̸o̸m̸ w̸h̸i̸t̸e̸ #l̸i̸s̸t̸✯", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ r̸e̸m̸o̸v̸e̸d̸ f̸r̸o̸m̸ w̸h̸i̸t̸e̸ #l̸i̸s̸t̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از لیست سفید #باموفقیت حذف شد✓*", 0, "md")
    end
@@ -655,7 +655,7 @@ end
   if cmd == "setowner" then
   if administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] then
     if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ a̸l̸r̸e̸a̸d̸y̸ a̸ #G̸r̸o̸u̸p̸ #o̸w̸n̸e̸r̸✯", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` i̸s̸ a̸l̸r̸e̸a̸d̸y̸ a̸ #G̸r̸o̸u̸p̸ #o̸w̸n̸e̸r̸✯ \n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." "..data.id_.."از قبل #صاحب گروه بود ✓", 0, "md")
       end
@@ -663,7 +663,7 @@ end
 administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] = user_name
     save_data(_config.moderation.data, administration)
    if not lang then
-  return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸w̸ t̸h̸e̸ #g̸r̸o̸u̸p̸ #o̸w̸n̸e̸r̸✯", 0, "md")
+  return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸w̸ t̸h̸e̸ #g̸r̸o̸u̸p̸ #o̸w̸n̸e̸r̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
    else
   return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *#باموفقیت بہ مقام صاحب گروه منتصب شد ✓*", 0, "md")
    end
@@ -671,7 +671,7 @@ end
   if cmd == "promote" then
 if administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] then
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ a̸l̸r̸e̸a̸d̸y̸ a̸ #M̸o̸d̸e̸r̸a̸t̸o̸r̸✯", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` i̸s̸ a̸l̸r̸e̸a̸d̸y̸ a̸ #M̸o̸d̸e̸r̸a̸t̸o̸r̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
 else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از قبل مُدیر گروه بود ✓*", 0, "md")
       end
@@ -679,7 +679,7 @@ else
 administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] = user_name
     save_data(_config.moderation.data, administration)
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ #P̸r̸o̸m̸o̸t̸e̸d̸✯", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ #P̸r̸o̸m̸o̸t̸e̸d̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *#باموفقیت بہ مقام مدیر گروه منتصب شد ✓*", 0, "md")
    end
@@ -687,7 +687,7 @@ end
    if cmd == "remowner" then
 if not administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] then
    if not lang then
-return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸t̸ a̸ G̸r̸o̸u̸p̸ o̸w̸n̸e̸r̸✯", 0, "md")
+return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸t̸ a̸ G̸r̸o̸u̸p̸ o̸w̸n̸e̸r̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
    else
 return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از قبل #صاحب گروه نبود✓*", 0, "md")
       end
@@ -695,7 +695,7 @@ return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"
 administration[tostring(arg.chat_id)]['owners'][tostring(data.id_)] = nil
     save_data(_config.moderation.data, administration)
    if not lang then
-return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸ l̸o̸n̸g̸e̸r̸ a̸ G̸r̸o̸u̸p̸ o̸w̸n̸e̸r̸✯", 0, "md")
+return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸ l̸o̸n̸g̸e̸r̸ a̸ G̸r̸o̸u̸p̸ o̸w̸n̸e̸r̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
     else
 return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از مقام #صاحب گروه #باموفقیت برکنار شد✓*", 0, "md")
    end
@@ -703,7 +703,7 @@ end
    if cmd == "demote" then
 if not administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] then
     if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸t̸ a̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✯", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` i̸s̸ n̸o̸t̸ a̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
     else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از قبل مُدیر گروه #نبود✓*", 0, "md")
    end
@@ -711,7 +711,7 @@ if not administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] then
 administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] = nil
     save_data(_config.moderation.data, administration)
    if not lang then
-    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ `["..user_name.."]` I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ D̸e̸m̸o̸t̸e̸d̸✯", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "*✦Done!*\n ✯U̸s̸e̸r̸ ["..user_name.."] I̸D̸ `["..data.id_.."]` h̸a̸s̸ b̸e̸e̸n̸ D̸e̸m̸o̸t̸e̸d̸✯\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
    else
     return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر_ "..user_name.." *"..data.id_.."* *از مقام مُدیر گروه #باموفقیت برکنار شُد✓*", 0, "md")
    end
@@ -721,7 +721,7 @@ if data.username_ then
 username = '@'..check_markdown(data.username_)
 else
 if not lang then
-username = '✦E̸r̸o̸r̸r̸✦ \n ✘U̸s̸e̸r̸ N̸o̸t̸ F̸o̸u̸n̸d̸✘'
+username = '✦E̸r̸o̸r̸r̸✦ \n ✘U̸s̸e̸r̸ N̸o̸t̸ F̸o̸u̸n̸d̸✘ \n#B̸y̸ ❯❯ @'..check_markdown(msg.from.username or '').."'
  else
 username = 'ندارد'
   end
@@ -734,7 +734,7 @@ end
    end
  else
     if not lang then
-  return tdcli.sendMessage(arg.chat_id, "", 0, "✦E̸r̸o̸r̸r̸✦ \n ✘U̸s̸e̸r̸ N̸o̸t̸ F̸o̸u̸n̸d̸✘", 0, "md")
+  return tdcli.sendMessage(arg.chat_id, "", 0, "✦E̸r̸o̸r̸r̸✦ \n ✘U̸s̸e̸r̸ N̸o̸t̸ F̸o̸u̸n̸d̸✘\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
    else
   return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر یافت نشد✘_", 0, "md")
     end
@@ -743,7 +743,7 @@ else
     if lang then
   return tdcli.sendMessage(arg.chat_id, "", 0, "_←کاربر یافت نشد✘_", 0, "md")
    else
-  return tdcli.sendMessage(arg.chat_id, "", 0, "✦E̸r̸o̸r̸r̸✦ \n ✘U̸s̸e̸r̸ N̸o̸t̸ F̸o̸u̸n̸d̸✘", 0, "md")
+  return tdcli.sendMessage(arg.chat_id, "", 0, "✦E̸r̸o̸r̸r̸✦ \n ✘U̸s̸e̸r̸ N̸o̸t̸ F̸o̸u̸n̸d̸✘\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."", 0, "md")
       end
    end
 end
@@ -755,7 +755,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -764,7 +764,7 @@ end
 local lock_link = data[tostring(target)]["settings"]["lock_link"] 
 if lock_link == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ L̸i̸n̸k̸ P̸o̸s̸t̸i̸n̸g̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ L̸o̸c̸k̸e̸d̸"
+ return "*✦Done!*\n ❂➤ L̸i̸n̸k̸ P̸o̸s̸t̸i̸n̸g̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "ارسال لینک در گروه هم اکنون ممنوع است"
 end
@@ -772,7 +772,7 @@ else
 data[tostring(target)]["settings"]["lock_link"] = "yes"
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*✦Done!*\n ❂➤ L̸i̸n̸k̸ P̸o̸s̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ L̸o̸c̸k̸e̸d̸"
+ return "*✦Done!*\n ❂➤ L̸i̸n̸k̸ P̸o̸s̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "ارسال لینک در گروه ممنوع شد"
 end
@@ -784,7 +784,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end
@@ -793,14 +793,14 @@ end
 local lock_link = data[tostring(target)]["settings"]["lock_link"]
  if lock_link == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ L̸i̸n̸k̸ P̸o̸s̸t̸i̸n̸g̸ I̸s̸ N̸o̸t̸ L̸o̸c̸k̸e̸d̸" 
+return "*✦Done!*\n ❂➤ L̸i̸n̸k̸ P̸o̸s̸t̸i̸n̸g̸ I̸s̸ N̸o̸t̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 elseif lang then
 return "ارسال لینک در گروه ممنوع نمیباشد"
 end
 else 
 data[tostring(target)]["settings"]["lock_link"] = "no" save_data(_config.moderation.data, data) 
 if not lang then
-return "*✦Done!*\n ❂➤ L̸i̸n̸k̸ P̸o̸s̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ U̸n̸l̸o̸c̸k̸e̸d̸" 
+return "*✦Done!*\n ❂➤ L̸i̸n̸k̸ P̸o̸s̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ U̸n̸l̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 else
 return "ارسال لینک در گروه آزاد شد"
 end
@@ -813,7 +813,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -822,7 +822,7 @@ end
 local lock_tag = data[tostring(target)]["settings"]["lock_tag"] 
 if lock_tag == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ T̸a̸g̸ P̸o̸s̸t̸i̸n̸g̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ L̸o̸c̸k̸e̸d̸"
+ return "*✦Done!*\n ❂➤ T̸a̸g̸ P̸o̸s̸t̸i̸n̸g̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "ارسال تگ در گروه هم اکنون ممنوع است"
 end
@@ -830,7 +830,7 @@ else
  data[tostring(target)]["settings"]["lock_tag"] = "yes"
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*✦Done!*\n ❂➤ T̸a̸g̸ P̸o̸s̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ L̸o̸c̸k̸e̸d̸"
+ return "*✦Done!*\n ❂➤ T̸a̸g̸ P̸o̸s̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "ارسال تگ در گروه ممنوع شد"
 end
@@ -842,7 +842,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end 
@@ -851,14 +851,14 @@ end
 local lock_tag = data[tostring(target)]["settings"]["lock_tag"]
  if lock_tag == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ T̸a̸g̸ P̸o̸s̸t̸i̸n̸g̸ I̸s̸ N̸o̸t̸ L̸o̸c̸k̸e̸d̸" 
+return "*✦Done!*\n ❂➤ T̸a̸g̸ P̸o̸s̸t̸i̸n̸g̸ I̸s̸ N̸o̸t̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 elseif lang then
 return "ارسال تگ در گروه ممنوع نمیباشد"
 end
 else 
 data[tostring(target)]["settings"]["lock_tag"] = "no" save_data(_config.moderation.data, data) 
 if not lang then
-return "*✦Done!*\n ❂➤ T̸a̸g̸ P̸o̸s̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ U̸n̸l̸o̸c̸k̸e̸d̸" 
+return "*✦Done!*\n ❂➤ T̸a̸g̸ P̸o̸s̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ U̸n̸l̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 else
 return "ارسال تگ در گروه آزاد شد"
 end
@@ -871,7 +871,7 @@ local function lock_mention(msg, data, target)
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -880,7 +880,7 @@ end
 local lock_mention = data[tostring(target)]["settings"]["lock_mention"] 
 if lock_mention == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ M̸e̸n̸t̸i̸o̸n̸ P̸o̸s̸t̸i̸n̸g̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ L̸o̸c̸k̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸e̸n̸t̸i̸o̸n̸ P̸o̸s̸t̸i̸n̸g̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "ارسال فراخوانی افراد هم اکنون ممنوع است"
 end
@@ -888,7 +888,7 @@ else
  data[tostring(target)]["settings"]["lock_mention"] = "yes"
 save_data(_config.moderation.data, data)
 if not lang then 
- return "*✦Done!*\n ❂➤ M̸e̸n̸t̸i̸o̸n̸ P̸o̸s̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ L̸o̸c̸k̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸e̸n̸t̸i̸o̸n̸ P̸o̸s̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else 
  return "ارسال فراخوانی افراد در گروه ممنوع شد"
 end
@@ -900,7 +900,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end
@@ -909,14 +909,14 @@ end
 local lock_mention = data[tostring(target)]["settings"]["lock_mention"]
  if lock_mention == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ M̸e̸n̸t̸i̸o̸n̸ P̸o̸s̸t̸i̸n̸g̸ I̸s̸ N̸o̸t̸ L̸o̸c̸k̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸e̸n̸t̸i̸o̸n̸ P̸o̸s̸t̸i̸n̸g̸ I̸s̸ N̸o̸t̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 elseif lang then
 return "ارسال فراخوانی افراد در گروه ممنوع نمیباشد"
 end
 else 
 data[tostring(target)]["settings"]["lock_mention"] = "no" save_data(_config.moderation.data, data) 
 if not lang then
-return "*✦Done!*\n ❂➤ M̸e̸n̸t̸i̸o̸n̸ P̸o̸s̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ U̸n̸l̸o̸c̸k̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸e̸n̸t̸i̸o̸n̸ P̸o̸s̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ U̸n̸l̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 else
 return "ارسال فراخوانی افراد در گروه آزاد شد"
 end
@@ -929,7 +929,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -938,7 +938,7 @@ end
 local lock_arabic = data[tostring(target)]["settings"]["lock_arabic"] 
 if lock_arabic == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ A̸r̸a̸b̸i̸c̸/P̸e̸r̸s̸i̸a̸n̸ P̸o̸s̸t̸i̸n̸g̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ L̸o̸c̸k̸e̸d̸"
+ return "*✦Done!*\n ❂➤ A̸r̸a̸b̸i̸c̸/P̸e̸r̸s̸i̸a̸n̸ P̸o̸s̸t̸i̸n̸g̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "ارسال کلمات عربی/فارسی در گروه هم اکنون ممنوع است"
 end
@@ -946,7 +946,7 @@ else
 data[tostring(target)]["settings"]["lock_arabic"] = "yes"
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*✦Done!*\n ❂➤ A̸r̸a̸b̸i̸c̸/P̸e̸r̸s̸i̸a̸n̸ P̸o̸s̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ L̸o̸c̸k̸e̸d̸"
+ return "*✦Done!*\n ❂➤ A̸r̸a̸b̸i̸c̸/P̸e̸r̸s̸i̸a̸n̸ P̸o̸s̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "ارسال کلمات عربی/فارسی در گروه ممنوع شد"
 end
@@ -958,7 +958,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end
@@ -967,14 +967,14 @@ end
 local lock_arabic = data[tostring(target)]["settings"]["lock_arabic"]
  if lock_arabic == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ A̸r̸a̸b̸i̸c̸/P̸e̸r̸s̸i̸a̸n̸ P̸o̸s̸t̸i̸n̸g̸ I̸s̸ N̸o̸t̸ L̸o̸c̸k̸e̸d̸" 
+return "*✦Done!*\n ❂➤ A̸r̸a̸b̸i̸c̸/P̸e̸r̸s̸i̸a̸n̸ P̸o̸s̸t̸i̸n̸g̸ I̸s̸ N̸o̸t̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 elseif lang then
 return "ارسال کلمات عربی/فارسی در گروه ممنوع نمیباشد"
 end
 else 
 data[tostring(target)]["settings"]["lock_arabic"] = "no" save_data(_config.moderation.data, data) 
 if not lang then
-return "*✦Done!*\n ❂➤ A̸r̸a̸b̸i̸c̸/P̸e̸r̸s̸i̸a̸n̸ P̸o̸s̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ U̸n̸l̸o̸c̸k̸e̸d̸" 
+return "*✦Done!*\n ❂➤ A̸r̸a̸b̸i̸c̸/P̸e̸r̸s̸i̸a̸n̸ P̸o̸s̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ U̸n̸l̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 else
 return "ارسال کلمات عربی/فارسی در گروه آزاد شد"
 end
@@ -987,7 +987,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -996,7 +996,7 @@ end
 local lock_edit = data[tostring(target)]["settings"]["lock_edit"] 
 if lock_edit == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ E̸d̸i̸t̸i̸n̸g̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ L̸o̸c̸k̸e̸d̸"
+ return "*✦Done!*\n ❂➤ E̸d̸i̸t̸i̸n̸g̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "ویرایش پیام هم اکنون ممنوع است"
 end
@@ -1004,7 +1004,7 @@ else
  data[tostring(target)]["settings"]["lock_edit"] = "yes"
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*✦Done!*\n ❂➤ E̸d̸i̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ L̸o̸c̸k̸e̸d̸"
+ return "*✦Done!*\n ❂➤ E̸d̸i̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "ویرایش پیام در گروه ممنوع شد"
 end
@@ -1016,7 +1016,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end
@@ -1025,14 +1025,14 @@ end
 local lock_edit = data[tostring(target)]["settings"]["lock_edit"]
  if lock_edit == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ E̸d̸i̸t̸i̸n̸g̸ I̸s̸ N̸o̸t̸ L̸o̸c̸k̸e̸d̸" 
+return "*✦Done!*\n ❂➤ E̸d̸i̸t̸i̸n̸g̸ I̸s̸ N̸o̸t̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 elseif lang then
 return "ویرایش پیام در گروه ممنوع نمیباشد"
 end
 else 
 data[tostring(target)]["settings"]["lock_edit"] = "no" save_data(_config.moderation.data, data) 
 if not lang then
-return "*✦Done!*\n ❂➤ E̸d̸i̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ U̸n̸l̸o̸c̸k̸e̸d̸" 
+return "*✦Done!*\n ❂➤ E̸d̸i̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ U̸n̸l̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 else
 return "ویرایش پیام در گروه آزاد شد"
 end
@@ -1045,7 +1045,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -1054,7 +1054,7 @@ end
 local lock_spam = data[tostring(target)]["settings"]["lock_spam"] 
 if lock_spam == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ S̸p̸a̸m̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ L̸o̸c̸k̸e̸d̸"
+ return "*✦Done!*\n ❂➤ S̸p̸a̸m̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "ارسال هرزنامه در گروه هم اکنون ممنوع است"
 end
@@ -1062,7 +1062,7 @@ else
  data[tostring(target)]["settings"]["lock_spam"] = "yes"
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*✦Done!*\n ❂➤ S̸p̸a̸m̸ H̸a̸s̸ B̸e̸e̸n̸ L̸o̸c̸k̸e̸d̸"
+ return "*✦Done!*\n ❂➤ S̸p̸a̸m̸ H̸a̸s̸ B̸e̸e̸n̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "ارسال هرزنامه در گروه ممنوع شد"
 end
@@ -1074,7 +1074,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end
@@ -1083,7 +1083,7 @@ end
 local lock_spam = data[tostring(target)]["settings"]["lock_spam"]
  if lock_spam == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ S̸p̸a̸m̸ P̸o̸s̸t̸i̸n̸g̸ I̸s̸ N̸o̸t̸ L̸o̸c̸k̸e̸d̸" 
+return "*✦Done!*\n ❂➤ S̸p̸a̸m̸ P̸o̸s̸t̸i̸n̸g̸ I̸s̸ N̸o̸t̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 elseif lang then
  return "ارسال هرزنامه در گروه ممنوع نمیباشد"
 end
@@ -1091,7 +1091,7 @@ else
 data[tostring(target)]["settings"]["lock_spam"] = "no" 
 save_data(_config.moderation.data, data)
 if not lang then 
-return "*✦Done!*\n ❂➤ S̸p̸a̸m̸ P̸o̸s̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ U̸n̸l̸o̸c̸k̸e̸d̸" 
+return "*✦Done!*\n ❂➤ S̸p̸a̸m̸ P̸o̸s̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ U̸n̸l̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 else
  return "ارسال هرزنامه در گروه آزاد شد"
 end
@@ -1104,7 +1104,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -1113,7 +1113,7 @@ end
 local lock_flood = data[tostring(target)]["settings"]["flood"] 
 if lock_flood == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ F̸l̸o̸o̸d̸i̸n̸g̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ L̸o̸c̸k̸e̸d̸"
+ return "*✦Done!*\n ❂➤ F̸l̸o̸o̸d̸i̸n̸g̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "ارسال پیام مکرر در گروه هم اکنون ممنوع است"
 end
@@ -1121,7 +1121,7 @@ else
  data[tostring(target)]["settings"]["flood"] = "yes"
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*✦Done!*\n ❂➤ F̸l̸o̸o̸d̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ L̸o̸c̸k̸e̸d̸"
+ return "*✦Done!*\n ❂➤ F̸l̸o̸o̸d̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "ارسال پیام مکرر در گروه ممنوع شد"
 end
@@ -1133,7 +1133,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end
@@ -1142,14 +1142,14 @@ end
 local lock_flood = data[tostring(target)]["settings"]["flood"]
  if lock_flood == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ F̸l̸o̸o̸d̸i̸n̸g̸ I̸s̸ N̸o̸t̸ L̸o̸c̸k̸e̸d̸" 
+return "*✦Done!*\n ❂➤ F̸l̸o̸o̸d̸i̸n̸g̸ I̸s̸ N̸o̸t̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 elseif lang then
 return "ارسال پیام مکرر در گروه ممنوع نمیباشد"
 end
 else 
 data[tostring(target)]["settings"]["flood"] = "no" save_data(_config.moderation.data, data) 
 if not lang then
-return "*✦Done!*\n ❂➤ F̸l̸o̸o̸d̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ U̸n̸l̸o̸c̸k̸e̸d̸" 
+return "*✦Done!*\n ❂➤ F̸l̸o̸o̸d̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ U̸n̸l̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 else
 return "ارسال پیام مکرر در گروه آزاد شد"
 end
@@ -1162,7 +1162,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -1171,7 +1171,7 @@ end
 local lock_bots = data[tostring(target)]["settings"]["lock_bots"] 
 if lock_bots == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ B̸o̸t̸s̸ P̸r̸o̸t̸e̸c̸t̸i̸o̸n̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ B̸o̸t̸s̸ P̸r̸o̸t̸e̸c̸t̸i̸o̸n̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "محافظت از گروه در برابر ربات ها هم اکنون فعال است"
 end
@@ -1179,7 +1179,7 @@ else
  data[tostring(target)]["settings"]["lock_bots"] = "yes"
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*✦Done!*\n ❂➤ B̸o̸t̸s̸ P̸r̸o̸t̸e̸c̸t̸i̸o̸n̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ B̸o̸t̸s̸ P̸r̸o̸t̸e̸c̸t̸i̸o̸n̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "محافظت از گروه در برابر ربات ها فعال شد"
 end
@@ -1191,7 +1191,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end 
@@ -1200,14 +1200,14 @@ end
 local lock_bots = data[tostring(target)]["settings"]["lock_bots"]
  if lock_bots == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ B̸o̸t̸s̸ P̸r̸o̸t̸e̸c̸t̸i̸o̸n̸ I̸s̸ N̸o̸t̸ E̸n̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ B̸o̸t̸s̸ P̸r̸o̸t̸e̸c̸t̸i̸o̸n̸ I̸s̸ N̸o̸t̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 elseif lang then
 return "محافظت از گروه در برابر ربات ها غیر فعال است"
 end
 else 
 data[tostring(target)]["settings"]["lock_bots"] = "no" save_data(_config.moderation.data, data) 
 if not lang then
-return "*✦Done!*\n ❂➤ B̸o̸t̸s̸ P̸r̸o̸t̸e̸c̸t̸i̸o̸n̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ B̸o̸t̸s̸ P̸r̸o̸t̸e̸c̸t̸i̸o̸n̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 else
 return "محافظت از گروه در برابر ربات ها غیر فعال شد"
 end
@@ -1220,7 +1220,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -1229,7 +1229,7 @@ end
 local lock_join = data[tostring(target)]["settings"]["lock_join"] 
 if lock_join == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ L̸o̸c̸k̸ J̸o̸i̸n̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ L̸o̸c̸k̸e̸d̸"
+ return "*✦Done!*\n ❂➤ L̸o̸c̸k̸ J̸o̸i̸n̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "ورود به گروه هم اکنون ممنوع است"
 end
@@ -1237,7 +1237,7 @@ else
  data[tostring(target)]["settings"]["lock_join"] = "yes"
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*✦Done!*\n ❂➤ L̸o̸c̸k̸ J̸o̸i̸n̸ H̸a̸s̸ B̸e̸e̸n̸ L̸o̸c̸k̸e̸d̸"
+ return "*✦Done!*\n ❂➤ L̸o̸c̸k̸ J̸o̸i̸n̸ H̸a̸s̸ B̸e̸e̸n̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "ورود به گروه ممنوع شد"
 end
@@ -1249,7 +1249,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end 
@@ -1258,7 +1258,7 @@ end
 local lock_join = data[tostring(target)]["settings"]["lock_join"]
  if lock_join == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ L̸o̸c̸k̸ J̸o̸i̸n̸ I̸s̸ N̸o̸t̸ L̸o̸c̸k̸e̸d̸" 
+return "*✦Done!*\n ❂➤ L̸o̸c̸k̸ J̸o̸i̸n̸ I̸s̸ N̸o̸t̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 elseif lang then
 return "ورود به گروه ممنوع نمیباشد"
 end
@@ -1266,7 +1266,7 @@ else
 data[tostring(target)]["settings"]["lock_join"] = "no"
 save_data(_config.moderation.data, data) 
 if not lang then
-return "*✦Done!*\n ❂➤ L̸o̸c̸k̸ J̸o̸i̸n̸ H̸a̸s̸ B̸e̸e̸n̸ U̸n̸l̸o̸c̸k̸e̸d̸" 
+return "*✦Done!*\n ❂➤ L̸o̸c̸k̸ J̸o̸i̸n̸ H̸a̸s̸ B̸e̸e̸n̸ U̸n̸l̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 else
 return "ورود به گروه آزاد شد"
 end
@@ -1279,7 +1279,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -1288,7 +1288,7 @@ end
 local lock_markdown = data[tostring(target)]["settings"]["lock_markdown"] 
 if lock_markdown == "yes" then
 if not lang then 
- return "*✦Done!*\n ❂➤ M̸a̸r̸k̸d̸o̸w̸n̸ P̸o̸s̸t̸i̸n̸g̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ L̸o̸c̸k̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸a̸r̸k̸d̸o̸w̸n̸ P̸o̸s̸t̸i̸n̸g̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "ارسال پیام های دارای فونت در گروه هم اکنون ممنوع است"
 end
@@ -1296,7 +1296,7 @@ else
  data[tostring(target)]["settings"]["lock_markdown"] = "yes"
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*✦Done!*\n ❂➤ M̸a̸r̸k̸d̸o̸w̸n̸ P̸o̸s̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ L̸o̸c̸k̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸a̸r̸k̸d̸o̸w̸n̸ P̸o̸s̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "ارسال پیام های دارای فونت در گروه ممنوع شد"
 end
@@ -1308,7 +1308,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end 
@@ -1317,14 +1317,14 @@ end
 local lock_markdown = data[tostring(target)]["settings"]["lock_markdown"]
  if lock_markdown == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ M̸a̸r̸k̸d̸o̸w̸n̸ P̸o̸s̸t̸i̸n̸g̸ I̸s̸ N̸o̸t̸ L̸o̸c̸k̸e̸d̸"
+return "*✦Done!*\n ❂➤ M̸a̸r̸k̸d̸o̸w̸n̸ P̸o̸s̸t̸i̸n̸g̸ I̸s̸ N̸o̸t̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
 return "ارسال پیام های دارای فونت در گروه ممنوع نمیباشد"
 end
 else 
 data[tostring(target)]["settings"]["lock_markdown"] = "no" save_data(_config.moderation.data, data) 
 if not lang then
-return "*✦Done!*\n ❂➤ M̸a̸r̸k̸d̸o̸w̸n̸ P̸o̸s̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ U̸n̸l̸o̸c̸k̸e̸d̸"
+return "*✦Done!*\n ❂➤ M̸a̸r̸k̸d̸o̸w̸n̸ P̸o̸s̸t̸i̸n̸g̸ H̸a̸s̸ B̸e̸e̸n̸ U̸n̸l̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "ارسال پیام های دارای فونت در گروه آزاد شد"
 end
@@ -1337,7 +1337,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -1346,7 +1346,7 @@ end
 local lock_webpage = data[tostring(target)]["settings"]["lock_webpage"] 
 if lock_webpage == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ W̸e̸b̸p̸a̸g̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ L̸o̸c̸k̸e̸d̸"
+ return "*✦Done!*\n ❂➤ W̸e̸b̸p̸a̸g̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "ارسال صفحات وب در گروه هم اکنون ممنوع است"
 end
@@ -1354,7 +1354,7 @@ else
  data[tostring(target)]["settings"]["lock_webpage"] = "yes"
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*✦Done!*\n ❂➤ W̸e̸b̸p̸a̸g̸e̸ H̸a̸s̸ B̸e̸e̸n̸ L̸o̸c̸k̸e̸d̸"
+ return "*✦Done!*\n ❂➤ W̸e̸b̸p̸a̸g̸e̸ H̸a̸s̸ B̸e̸e̸n̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "ارسال صفحات وب در گروه ممنوع شد"
 end
@@ -1366,7 +1366,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end 
@@ -1375,7 +1375,7 @@ end
 local lock_webpage = data[tostring(target)]["settings"]["lock_webpage"]
  if lock_webpage == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ W̸e̸b̸p̸a̸g̸e̸ I̸s̸ N̸o̸t̸ L̸o̸c̸k̸e̸d̸" 
+return "*✦Done!*\n ❂➤ W̸e̸b̸p̸a̸g̸e̸ I̸s̸ N̸o̸t̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 elseif lang then
 return "ارسال صفحات وب در گروه ممنوع نمیباشد"
 end
@@ -1383,7 +1383,7 @@ else
 data[tostring(target)]["settings"]["lock_webpage"] = "no"
 save_data(_config.moderation.data, data) 
 if not lang then
-return "*✦Done!*\n ❂➤ W̸e̸b̸p̸a̸g̸e̸ H̸a̸s̸ B̸e̸e̸n̸ U̸n̸l̸o̸c̸k̸e̸d̸" 
+return "*✦Done!*\n ❂➤ W̸e̸b̸p̸a̸g̸e̸ H̸a̸s̸ B̸e̸e̸n̸ U̸n̸l̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 else
 return "ارسال صفحات وب در گروه آزاد شد"
 end
@@ -1396,7 +1396,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -1405,7 +1405,7 @@ end
 local lock_pin = data[tostring(target)]["settings"]["lock_pin"] 
 if lock_pin == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ P̸i̸n̸n̸e̸d̸ M̸e̸s̸s̸a̸g̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ L̸o̸c̸k̸e̸d̸"
+ return "*✦Done!*\n ❂➤ P̸i̸n̸n̸e̸d̸ M̸e̸s̸s̸a̸g̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "سنجاق کردن پیام در گروه هم اکنون ممنوع است"
 end
@@ -1413,7 +1413,7 @@ else
  data[tostring(target)]["settings"]["lock_pin"] = "yes"
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*✦Done!*\n ❂➤ P̸i̸n̸n̸e̸d̸ M̸e̸s̸s̸a̸g̸e̸ H̸a̸s̸ B̸e̸e̸n̸ L̸o̸c̸k̸e̸d̸"
+ return "*✦Done!*\n ❂➤ P̸i̸n̸n̸e̸d̸ M̸e̸s̸s̸a̸g̸e̸ H̸a̸s̸ B̸e̸e̸n̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "سنجاق کردن پیام در گروه ممنوع شد"
 end
@@ -1425,7 +1425,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end 
@@ -1434,7 +1434,7 @@ end
 local lock_pin = data[tostring(target)]["settings"]["lock_pin"]
  if lock_pin == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ P̸i̸n̸n̸e̸d̸ M̸e̸s̸s̸a̸g̸e̸ I̸s̸ N̸o̸t̸ L̸o̸c̸k̸e̸d̸" 
+return "*✦Done!*\n ❂➤ P̸i̸n̸n̸e̸d̸ M̸e̸s̸s̸a̸g̸e̸ I̸s̸ N̸o̸t̸ L̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 elseif lang then
 return "سنجاق کردن پیام در گروه ممنوع نمیباشد"
 end
@@ -1442,7 +1442,7 @@ else
 data[tostring(target)]["settings"]["lock_pin"] = "no"
 save_data(_config.moderation.data, data) 
 if not lang then
-return "*✦Done!*\n ❂➤ P̸i̸n̸n̸e̸d̸ M̸e̸s̸s̸a̸g̸ H̸a̸s̸ B̸e̸e̸n̸ U̸n̸l̸o̸c̸k̸e̸d̸" 
+return "*✦Done!*\n ❂➤ P̸i̸n̸n̸e̸d̸ M̸e̸s̸s̸a̸g̸ H̸a̸s̸ B̸e̸e̸n̸ U̸n̸l̸o̸c̸k̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 else
 return "سنجاق کردن پیام در گروه آزاد شد"
 end
@@ -1454,7 +1454,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- 	return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ 	return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
   return "✘شما مُدیر گروه نیستی✘"
 end
@@ -1600,7 +1600,7 @@ end
 local mute_all = data[tostring(target)]["mutes"]["mute_all"] 
 if mute_all == "yes" then 
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ A̸l̸l̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ A̸l̸l̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 elseif lang then
 return "بیصدا کردن همه فعال است"
 end
@@ -1608,7 +1608,7 @@ else
 data[tostring(target)]["mutes"]["mute_all"] = "yes"
  save_data(_config.moderation.data, data) 
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ A̸l̸l̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ A̸l̸l̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 else
 return "بیصدا کردن همه فعال شد"
 end
@@ -1620,7 +1620,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then 
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'" 
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 else
 return "✘شما مُدیر گروه نیستی✘"
 end
@@ -1629,7 +1629,7 @@ end
 local mute_all = data[tostring(target)]["mutes"]["mute_all"] 
 if mute_all == "no" then 
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ A̸l̸l̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ A̸l̸l̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 elseif lang then
 return "بیصدا کردن همه غیر فعال است"
 end
@@ -1637,7 +1637,7 @@ else
 data[tostring(target)]["mutes"]["mute_all"] = "no"
  save_data(_config.moderation.data, data) 
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ A̸l̸l̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ A̸l̸l̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 else
 return "بیصدا کردن همه غیر فعال شد"
 end 
@@ -1650,7 +1650,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -1659,7 +1659,7 @@ end
 local mute_gif = data[tostring(target)]["mutes"]["mute_gif"] 
 if mute_gif == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ G̸i̸f̸ i̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ G̸i̸f̸ i̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -1667,7 +1667,7 @@ else
  data[tostring(target)]["mutes"]["mute_gif"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then 
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ G̸i̸f̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ G̸i̸f̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "بیصدا کردن تصاویر متحرک فعال شد"
 end
@@ -1679,7 +1679,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end
@@ -1688,7 +1688,7 @@ end
 local mute_gif = data[tostring(target)]["mutes"]["mute_gif"]
  if mute_gif == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ G̸i̸f̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ G̸i̸f̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 elseif lang then
 return "بیصدا کردن تصاویر متحرک غیر فعال بود"
 end
@@ -1696,7 +1696,7 @@ else
 data[tostring(target)]["mutes"]["mute_gif"] = "no"
  save_data(_config.moderation.data, data) 
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ G̸i̸f̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ G̸i̸f̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 else
 return "بیصدا کردن تصاویر متحرک غیر فعال شد"
 end
@@ -1708,7 +1708,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -1717,7 +1717,7 @@ end
 local mute_game = data[tostring(target)]["mutes"]["mute_game"] 
 if mute_game == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ G̸a̸m̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ G̸a̸m̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "بیصدا کردن بازی های تحت وب فعال است"
 end
@@ -1725,7 +1725,7 @@ else
  data[tostring(target)]["mutes"]["mute_game"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ G̸a̸m̸e̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ G̸a̸m̸e̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "بیصدا کردن بازی های تحت وب فعال شد"
 end
@@ -1737,7 +1737,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end 
@@ -1746,7 +1746,7 @@ end
 local mute_game = data[tostring(target)]["mutes"]["mute_game"]
  if mute_game == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ G̸a̸m̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ G̸a̸m̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 elseif lang then
 return "بیصدا کردن بازی های تحت وب غیر فعال است"
 end
@@ -1754,7 +1754,7 @@ else
 data[tostring(target)]["mutes"]["mute_game"] = "no"
  save_data(_config.moderation.data, data)
 if not lang then 
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ G̸a̸m̸e̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ G̸a̸m̸e̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 else
 return "بیصدا کردن بازی های تحت وب غیر فعال شد"
 end
@@ -1766,7 +1766,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -1775,7 +1775,7 @@ end
 local mute_inline = data[tostring(target)]["mutes"]["mute_inline"] 
 if mute_inline == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ I̸n̸l̸i̸n̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ I̸n̸l̸i̸n̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "بیصدا کردن کیبورد شیشه ای فعال است"
 end
@@ -1783,7 +1783,7 @@ else
  data[tostring(target)]["mutes"]["mute_inline"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ I̸n̸l̸i̸n̸e̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ I̸n̸l̸i̸n̸e̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "بیصدا کردن کیبورد شیشه ای فعال شد"
 end
@@ -1795,7 +1795,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end
@@ -1804,7 +1804,7 @@ end
 local mute_inline = data[tostring(target)]["mutes"]["mute_inline"]
  if mute_inline == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ I̸n̸l̸i̸n̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ I̸n̸l̸i̸n̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 elseif lang then
 return "بیصدا کردن کیبورد شیشه ای غیر فعال است"
 end
@@ -1812,7 +1812,7 @@ else
 data[tostring(target)]["mutes"]["mute_inline"] = "no"
  save_data(_config.moderation.data, data) 
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ I̸n̸l̸i̸n̸e̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ I̸n̸l̸i̸n̸e̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 else
 return "بیصدا کردن کیبورد شیشه ای غیر فعال شد"
 end
@@ -1824,7 +1824,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -1833,7 +1833,7 @@ end
 local mute_text = data[tostring(target)]["mutes"]["mute_text"] 
 if mute_text == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ T̸e̸x̸t̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ T̸e̸x̸t̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "بیصدا کردن متن فعال است"
 end
@@ -1841,7 +1841,7 @@ else
  data[tostring(target)]["mutes"]["mute_text"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ T̸e̸x̸t̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ T̸e̸x̸t̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "بیصدا کردن متن فعال شد"
 end
@@ -1853,7 +1853,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end 
@@ -1862,7 +1862,7 @@ end
 local mute_text = data[tostring(target)]["mutes"]["mute_text"]
  if mute_text == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ T̸e̸x̸t̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸"
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ T̸e̸x̸t̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
 return "بیصدا کردن متن غیر فعال است" 
 end
@@ -1870,7 +1870,7 @@ else
 data[tostring(target)]["mutes"]["mute_text"] = "no"
  save_data(_config.moderation.data, data) 
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ T̸e̸x̸t̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ T̸e̸x̸t̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 else
 return "بیصدا کردن متن غیر فعال شد"
 end
@@ -1882,7 +1882,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -1891,7 +1891,7 @@ end
 local mute_photo = data[tostring(target)]["mutes"]["mute_photo"] 
 if mute_photo == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ P̸h̸o̸t̸o̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ P̸h̸o̸t̸o̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "بیصدا کردن عکس فعال است"
 end
@@ -1899,7 +1899,7 @@ else
  data[tostring(target)]["mutes"]["mute_photo"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ P̸h̸o̸t̸o̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ P̸h̸o̸t̸o̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "بیصدا کردن عکس فعال شد"
 end
@@ -1911,7 +1911,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end
@@ -1920,7 +1920,7 @@ end
 local mute_photo = data[tostring(target)]["mutes"]["mute_photo"]
  if mute_photo == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ P̸h̸o̸t̸o̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ P̸h̸o̸t̸o̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 elseif lang then
 return "بیصدا کردن عکس غیر فعال است"
 end
@@ -1928,7 +1928,7 @@ else
 data[tostring(target)]["mutes"]["mute_photo"] = "no"
  save_data(_config.moderation.data, data) 
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ P̸h̸o̸t̸o̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ P̸h̸o̸t̸o̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 else
 return "بیصدا کردن عکس غیر فعال شد"
 end
@@ -1940,7 +1940,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -1949,7 +1949,7 @@ end
 local mute_video = data[tostring(target)]["mutes"]["mute_video"] 
 if mute_video == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ *Mute Video* _Is Already Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ V̸i̸d̸e̸o̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "بیصدا کردن فیلم فعال است"
 end
@@ -1957,7 +1957,7 @@ else
  data[tostring(target)]["mutes"]["mute_video"] = "yes" 
 save_data(_config.moderation.data, data)
 if not lang then 
- return "*✦Done!*\n ❂➤ *Mute Video* _Has Been Enabled_"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ V̸i̸d̸e̸o̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "بیصدا کردن فیلم فعال شد"
 end
@@ -1969,7 +1969,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end
@@ -1978,7 +1978,7 @@ end
 local mute_video = data[tostring(target)]["mutes"]["mute_video"]
  if mute_video == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ V̸i̸d̸e̸o̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ V̸i̸d̸e̸o̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 elseif lang then
 return "بیصدا کردن فیلم غیر فعال است"
 end
@@ -1986,7 +1986,7 @@ else
 data[tostring(target)]["mutes"]["mute_video"] = "no"
  save_data(_config.moderation.data, data) 
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ V̸i̸d̸e̸o̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ V̸i̸d̸e̸o̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 else
 return "بیصدا کردن فیلم غیر فعال شد"
 end
@@ -1998,7 +1998,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -2007,7 +2007,7 @@ end
 local mute_audio = data[tostring(target)]["mutes"]["mute_audio"] 
 if mute_audio == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ A̸u̸d̸i̸o̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ A̸u̸d̸i̸o̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "بیصدا کردن آهنگ فعال است"
 end
@@ -2015,7 +2015,7 @@ else
  data[tostring(target)]["mutes"]["mute_audio"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ A̸u̸d̸i̸o̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ A̸u̸d̸i̸o̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else 
 return "بیصدا کردن آهنگ فعال شد"
 end
@@ -2027,7 +2027,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end
@@ -2036,7 +2036,7 @@ end
 local mute_audio = data[tostring(target)]["mutes"]["mute_audio"]
  if mute_audio == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ A̸u̸d̸i̸o̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ A̸u̸d̸i̸o̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 elseif lang then
 return "بیصدا کردن آهنک غیر فعال است"
 end
@@ -2044,7 +2044,7 @@ else
 data[tostring(target)]["mutes"]["mute_audio"] = "no"
  save_data(_config.moderation.data, data)
 if not lang then 
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ A̸u̸d̸i̸o̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸"
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ A̸u̸d̸i̸o̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "بیصدا کردن آهنگ غیر فعال شد" 
 end
@@ -2056,7 +2056,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -2065,7 +2065,7 @@ end
 local mute_voice = data[tostring(target)]["mutes"]["mute_voice"] 
 if mute_voice == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ V̸o̸i̸c̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ V̸o̸i̸c̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "بیصدا کردن صدا فعال است"
 end
@@ -2073,7 +2073,7 @@ else
  data[tostring(target)]["mutes"]["mute_voice"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ V̸o̸i̸c̸e̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ V̸o̸i̸c̸e̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "بیصدا کردن صدا فعال شد"
 end
@@ -2085,7 +2085,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end
@@ -2094,7 +2094,7 @@ end
 local mute_voice = data[tostring(target)]["mutes"]["mute_voice"]
  if mute_voice == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ V̸o̸i̸c̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ V̸o̸i̸c̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 elseif lang then
 return "بیصدا کردن صدا غیر فعال است"
 end
@@ -2102,7 +2102,7 @@ else
 data[tostring(target)]["mutes"]["mute_voice"] = "no"
  save_data(_config.moderation.data, data)
 if not lang then 
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ V̸o̸i̸c̸e̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ V̸o̸i̸c̸e̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 else
 return "بیصدا کردن صدا غیر فعال شد"
 end
@@ -2114,7 +2114,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -2123,7 +2123,7 @@ end
 local mute_sticker = data[tostring(target)]["mutes"]["mute_sticker"] 
 if mute_sticker == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ S̸t̸i̸c̸k̸e̸r̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ S̸t̸i̸c̸k̸e̸r̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "بیصدا کردن برچسب فعال است"
 end
@@ -2131,7 +2131,7 @@ else
  data[tostring(target)]["mutes"]["mute_sticker"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ S̸t̸i̸c̸k̸e̸r̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ S̸t̸i̸c̸k̸e̸r̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "بیصدا کردن برچسب فعال شد"
 end
@@ -2143,7 +2143,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end 
@@ -2152,7 +2152,7 @@ end
 local mute_sticker = data[tostring(target)]["mutes"]["mute_sticker"]
  if mute_sticker == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ S̸t̸i̸c̸k̸e̸r̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ S̸t̸i̸c̸k̸e̸r̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 elseif lang then
 return "بیصدا کردن برچسب غیر فعال است"
 end
@@ -2160,7 +2160,7 @@ else
 data[tostring(target)]["mutes"]["mute_sticker"] = "no"
  save_data(_config.moderation.data, data)
 if not lang then 
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ S̸t̸i̸c̸k̸e̸r̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸"
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ S̸t̸i̸c̸k̸e̸r̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "بیصدا کردن برچسب غیر فعال شد"
 end 
@@ -2172,7 +2172,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -2181,7 +2181,7 @@ end
 local mute_contact = data[tostring(target)]["mutes"]["mute_contact"] 
 if mute_contact == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ C̸o̸n̸t̸a̸c̸t̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ C̸o̸n̸t̸a̸c̸t̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "بیصدا کردن مخاطب فعال است"
 end
@@ -2189,7 +2189,7 @@ else
  data[tostring(target)]["mutes"]["mute_contact"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ C̸o̸n̸t̸a̸c̸t̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ C̸o̸n̸t̸a̸c̸t̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "بیصدا کردن مخاطب فعال شد"
 end
@@ -2201,7 +2201,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end
@@ -2210,7 +2210,7 @@ end
 local mute_contact = data[tostring(target)]["mutes"]["mute_contact"]
  if mute_contact == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ C̸o̸n̸t̸a̸c̸t̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ C̸o̸n̸t̸a̸c̸t̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 elseif lang then
 return "بیصدا کردن مخاطب غیر فعال است"
 end
@@ -2218,7 +2218,7 @@ else
 data[tostring(target)]["mutes"]["mute_contact"] = "no"
  save_data(_config.moderation.data, data) 
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ C̸o̸n̸t̸a̸c̸t̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ C̸o̸n̸t̸a̸c̸t̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 else
 return "بیصدا کردن مخاطب غیر فعال شد"
 end
@@ -2230,7 +2230,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -2239,7 +2239,7 @@ end
 local mute_forward = data[tostring(target)]["mutes"]["mute_forward"] 
 if mute_forward == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ F̸o̸r̸w̸a̸r̸d̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ F̸o̸r̸w̸a̸r̸d̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "بیصدا کردن نقل قول فعال است"
 end
@@ -2247,7 +2247,7 @@ else
  data[tostring(target)]["mutes"]["mute_forward"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ F̸o̸r̸w̸a̸r̸d̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ F̸o̸r̸w̸a̸r̸d̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "بیصدا کردن نقل قول فعال شد"
 end
@@ -2259,7 +2259,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end
@@ -2268,7 +2268,7 @@ end
 local mute_forward = data[tostring(target)]["mutes"]["mute_forward"]
  if mute_forward == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ F̸o̸r̸w̸a̸r̸d̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸"
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ F̸o̸r̸w̸a̸r̸d̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
 return "بیصدا کردن نقل قول غیر فعال است"
 end 
@@ -2276,7 +2276,7 @@ else
 data[tostring(target)]["mutes"]["mute_forward"] = "no"
  save_data(_config.moderation.data, data)
 if not lang then 
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ F̸o̸r̸w̸a̸r̸d̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ F̸o̸r̸w̸a̸r̸d̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 else
 return "بیصدا کردن نقل قول غیر فعال شد"
 end
@@ -2288,7 +2288,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -2297,7 +2297,7 @@ end
 local mute_location = data[tostring(target)]["mutes"]["mute_location"] 
 if mute_location == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ L̸o̸c̸a̸t̸i̸o̸n̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ L̸o̸c̸a̸t̸i̸o̸n̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "بیصدا کردن موقعیت فعال است"
 end
@@ -2305,7 +2305,7 @@ else
  data[tostring(target)]["mutes"]["mute_location"] = "yes" 
 save_data(_config.moderation.data, data)
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ L̸o̸c̸a̸t̸i̸o̸n̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ L̸o̸c̸a̸t̸i̸o̸n̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "بیصدا کردن موقعیت فعال شد"
 end
@@ -2317,7 +2317,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end
@@ -2326,7 +2326,7 @@ end
 local mute_location = data[tostring(target)]["mutes"]["mute_location"]
  if mute_location == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ L̸o̸c̸a̸t̸i̸o̸n̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ L̸o̸c̸a̸t̸i̸o̸n̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 elseif lang then
 return "بیصدا کردن موقعیت غیر فعال است"
 end
@@ -2334,7 +2334,7 @@ else
 data[tostring(target)]["mutes"]["mute_location"] = "no"
  save_data(_config.moderation.data, data) 
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ L̸o̸c̸a̸t̸i̸o̸n̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ L̸o̸c̸a̸t̸i̸o̸n̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 else
 return "بیصدا کردن موقعیت غیر فعال شد"
 end
@@ -2346,7 +2346,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end
@@ -2355,7 +2355,7 @@ end
 local mute_document = data[tostring(target)]["mutes"]["mute_document"] 
 if mute_document == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ D̸o̸c̸u̸m̸e̸n̸t̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ D̸o̸c̸u̸m̸e̸n̸t̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "بیصدا کردن اسناد فعال لست"
 end
@@ -2363,7 +2363,7 @@ else
  data[tostring(target)]["mutes"]["mute_document"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ D̸o̸c̸u̸m̸e̸n̸t̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ D̸o̸c̸u̸m̸e̸n̸t̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
  return "بیصدا کردن اسناد فعال شد"
 end
@@ -2375,7 +2375,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end
@@ -2384,7 +2384,7 @@ end
 local mute_document = data[tostring(target)]["mutes"]["mute_document"]
  if mute_document == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ D̸o̸c̸u̸m̸e̸n̸t̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ D̸o̸c̸u̸m̸e̸n̸t̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 elseif lang then
 return "بیصدا کردن اسناد غیر فعال است"
 end
@@ -2392,7 +2392,7 @@ else
 data[tostring(target)]["mutes"]["mute_document"] = "no"
  save_data(_config.moderation.data, data) 
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ D̸o̸c̸u̸m̸e̸n̸t̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸" 
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ D̸o̸c̸u̸m̸e̸n̸t̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '').."" 
 else
 return "بیصدا کردن اسناد غیر فعال شد"
 end
@@ -2404,7 +2404,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -2413,7 +2413,7 @@ end
 local mute_tgservice = data[tostring(target)]["mutes"]["mute_tgservice"] 
 if mute_tgservice == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ T̸g̸S̸e̸r̸v̸i̸c̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ T̸g̸S̸e̸r̸v̸i̸c̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "بیصدا کردن خدمات تلگرام فعال است"
 end
@@ -2421,7 +2421,7 @@ else
  data[tostring(target)]["mutes"]["mute_tgservice"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ T̸g̸S̸e̸r̸v̸i̸c̸e̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ T̸g̸S̸e̸r̸v̸i̸c̸e̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "بیصدا کردن خدمات تلگرام فعال شد"
 end
@@ -2433,7 +2433,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end 
@@ -2442,7 +2442,7 @@ end
 local mute_tgservice = data[tostring(target)]["mutes"]["mute_tgservice"]
  if mute_tgservice == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ T̸g̸S̸e̸r̸v̸i̸c̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸"
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ T̸g̸S̸e̸r̸v̸i̸c̸e̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
 return "بیصدا کردن خدمات تلگرام غیر فعال است"
 end 
@@ -2450,7 +2450,7 @@ else
 data[tostring(target)]["mutes"]["mute_tgservice"] = "no"
  save_data(_config.moderation.data, data) 
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ T̸g̸S̸e̸r̸v̸i̸c̸e̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸"
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ T̸g̸S̸e̸r̸v̸i̸c̸e̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "بیصدا کردن خدمات تلگرام غیر فعال شد"
 end 
@@ -2463,7 +2463,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+ return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title..""
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -2472,7 +2472,7 @@ end
 local mute_keyboard = data[tostring(target)]["mutes"]["mute_keyboard"] 
 if mute_keyboard == "yes" then
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ K̸e̸y̸b̸o̸a̸r̸d̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ K̸e̸y̸b̸o̸a̸r̸d̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
  return "بیصدا کردن صفحه کلید فعال است"
 end
@@ -2480,7 +2480,7 @@ else
  data[tostring(target)]["mutes"]["mute_keyboard"] = "yes" 
 save_data(_config.moderation.data, data) 
 if not lang then
- return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ K̸e̸y̸b̸o̸a̸r̸d̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸"
+ return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ K̸e̸y̸b̸o̸a̸r̸d̸ H̸a̸s̸ B̸e̸e̸n̸ E̸n̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "بیصدا کردن صفحه کلید فعال شد"
 end
@@ -2492,7 +2492,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
  if not is_mod(msg) then
 if not lang then
-return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"
+return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "✘شما مُدیر گروه نیستی✘"
 end 
@@ -2501,7 +2501,7 @@ end
 local mute_keyboard = data[tostring(target)]["mutes"]["mute_keyboard"]
  if mute_keyboard == "no" then
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ K̸e̸y̸b̸o̸a̸r̸d̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸"
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ K̸e̸y̸b̸o̸a̸r̸d̸ I̸s̸ A̸l̸r̸e̸a̸d̸y̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
 return "بیصدا کردن صفحه کلید غیرفعال است"
 end 
@@ -2509,7 +2509,7 @@ else
 data[tostring(target)]["mutes"]["mute_keyboard"] = "no"
  save_data(_config.moderation.data, data) 
 if not lang then
-return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ K̸e̸y̸b̸o̸a̸r̸d̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸"
+return "*✦Done!*\n ❂➤ M̸u̸t̸e̸ K̸e̸y̸b̸o̸a̸r̸d̸ H̸a̸s̸ B̸e̸e̸n̸ D̸i̸s̸a̸b̸l̸e̸d̸\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 else
 return "بیصدا کردن صفحه کلید غیرفعال شد"
 end 
@@ -2521,7 +2521,7 @@ local hash = "gp_lang:"..msg.to.id
 local lang = redis:get(hash)
 if not is_mod(msg) then
 if not lang then
- 	return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ '..msg.to.title..'"	
+ 	return "*✦E̸r̸o̸r̸r̸✦*\n✘Y̸o̸u̸ a̸r̸e̸ n̸o̸t̸ M̸o̸d̸e̸r̸a̸t̸o̸r̸✘ \n ✦G̸r̸o̸u̸p̸ N̸a̸m̸e ̸❯❯ "..msg.to.title.."\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""	
 else
  return "✘شما مُدیر گروه نیستی✘"
 end
@@ -2645,7 +2645,7 @@ local function getpro(arg, data)
      end
    else
        if not lang then
-      tdcli.sendMessage(msg.to.id, msg.id_, 1, "`You Have Not Profile Photo...!`\n\n> *Chat ID :* `"..msg.to.id.."`\n*User ID :* `"..msg.from.id.."`", 1, 'md')
+      tdcli.sendMessage(msg.to.id, msg.id_, 1, "`Y̸o̸u̸ H̸a̸v̸e̸ N̸o̸t̸ P̸r̸o̸f̸i̸l̸e̸ P̸h̸o̸t̸o̸...!`\n̸\n̸> *C̸h̸a̸t̸ I̸D̸ :*`"..msg.to.id.."`\n*U̸s̸e̸r̸ I̸D̸ :*`"..msg.from.id.."`", 1, 'md')
        elseif lang then
       tdcli.sendMessage(msg.to.id, msg.id_, 1, "_شما هیچ عکسی ندارید...!_\n\n> _شناسه گروه :_ `"..msg.to.id.."`\n_شناسه شما :_ `"..msg.from.id.."`", 1, 'md')
             end
@@ -2680,7 +2680,7 @@ if is_owner(msg) then
 	  save_data(_config.moderation.data, data)
 tdcli.pinChannelMessage(msg.to.id, msg.reply_id, 1)
 if not lang then
-return "Mᴇssᴀɢᴇ Hᴀs Bᴇᴇɴ #Pɪɴɴᴇᴅ ✓"
+return "Mᴇssᴀɢᴇ Hᴀs Bᴇᴇɴ #Pɪɴɴᴇᴅ ✓\n#B̸y̸ ❯❯ @"..check_markdown(msg.from.username or '')..""
 elseif lang then
 return "پیام شما #باموفقیت سجاق شد✓"
 end
